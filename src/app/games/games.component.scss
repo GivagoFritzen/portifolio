@@ -1,0 +1,14 @@
+.splide__slide {
+    padding: 2rem;
+    width: calc(((100% + 2rem) / 3) - 2rem);
+    height: 10rem;
+
+    .is-active {
+        background-color: yellow;
+    }
+
+    div {
+        background: red;
+        height: 100%;
+    }
+}

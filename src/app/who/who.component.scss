@@ -1,0 +1,43 @@
+@import './stars.scss';
+
+.who {
+    align-items: center;
+    color: white;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    width: 100%;
+
+    div {
+        font-size: 44px;
+        text-align: center;
+    }
+
+    #text {
+        display: inline-block;
+        vertical-align: middle;
+        color: white;
+        letter-spacing: 2px;
+    }
+
+    #cursor {
+        display: inline-block;
+        vertical-align: middle;
+        width: 3px;
+        height: 50px;
+        background-color: white;
+        animation: blink .75s step-end infinite;
+    }
+
+    @keyframes blink {
+
+        from,
+        to {
+            background-color: transparent
+        }
+
+        50% {
+            background-color: white;
+        }
+    }
+}
