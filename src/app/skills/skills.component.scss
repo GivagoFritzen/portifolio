@@ -1,17 +1,32 @@
+.skills {
+    align-items: center;
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .accordion {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 35px;
+        padding: 0;
+        width: 100px;
+    }
+}
+
 .skill {
-    width: 500px;
-    margin: 60px auto;
     color: #fff;
+    //box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     padding: 20px;
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    width: 700px;
 
     li {
         margin: 20px 0;
         padding: 10px;
     }
 
-    // Teste
-    h2 {
+    h1 {
         color: black;
     }
 }
@@ -34,20 +49,5 @@
         height: 20px;
         float: left;
         background: linear-gradient(135deg, rgba(236, 0, 140, 1), rgba(252, 103, 103, 1)100%);
-    }
-}
-
-.css {
-    width: 70%;
-    animation: teste 3s;
-}
-
-@keyframes teste {
-    0% {
-        width: 0%;
-    }
-
-    100% {
-        width: 90%;
     }
 }

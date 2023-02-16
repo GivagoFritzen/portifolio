@@ -1,19 +1,17 @@
-<div>
-    <p>skills works!</p>
-
+<section class="skills">
     <ul class="skill">
-        <li>
-            <h2>CSS</h2>
+        <li *ngFor="let skill of skills">
+            <h1>{{ skill.title }}</h1>
             <span class="bar">
-                <span class="css"></span>
-            </span>
-        </li>
-
-        <li>
-            <h2>CSS</h2>
-            <span class="bar">
-                <span class="css"></span>
+                <span class="{{ skill.title }}" [ngStyle]="{
+                    'width': skill.percentage,
+                    'animation-name': skill.title,
+                    'animation-duration': '3s'
+                }"></span>
             </span>
         </li>
     </ul>
-</div>
+    <button class="accordion" (click)="hiddenOthersSkills()">
+        <i [className]="hidden ? 'fa fa-angle-double-down' : 'fa fa-angle-double-up'"></i>
+    </button>
+</section>
