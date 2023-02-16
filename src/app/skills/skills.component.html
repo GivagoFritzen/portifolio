@@ -1,6 +1,16 @@
-<section class="skills">
-    <ul class="skill">
+<section class="section-skills">
+    <ul class="skills">
         <li *ngFor="let skill of skills">
+            <h1>{{ skill.title }}</h1>
+            <span class="bar">
+                <span class="{{ skill.title }}" [ngStyle]="{
+                    'width': skill.percentage,
+                    'animation-name': skill.title,
+                    'animation-duration': '3s'
+                }"></span>
+            </span>
+        </li>
+        <li *ngFor="let skill of othersSkills" [className]="hidden === 'out' ? 'hidden' : ''" [@slideInOut]="hidden">
             <h1>{{ skill.title }}</h1>
             <span class="bar">
                 <span class="{{ skill.title }}" [ngStyle]="{
@@ -12,6 +22,6 @@
         </li>
     </ul>
     <button class="accordion" (click)="hiddenOthersSkills()">
-        <i [className]="hidden ? 'fa fa-angle-double-down' : 'fa fa-angle-double-up'"></i>
+        <i [className]="hidden === 'out' ? 'fa fa-angle-double-down' : 'fa fa-angle-double-up'"></i>
     </button>
 </section>

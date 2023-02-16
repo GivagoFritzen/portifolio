@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { SkillModel } from 'src/models/skill.model';
+import { SlideInOutAnimation } from 'src/utils/animations';
 
 @Component({
   selector: 'skills',
   templateUrl: './skills.component.html',
-  styleUrls: ['./skills.component.scss']
+  styleUrls: ['./skills.component.scss'],
+  animations: [SlideInOutAnimation]
 })
 export class SkillsComponent implements OnInit {
 
-  hidden: boolean = true;
+  hidden: string = 'out';
   skills: SkillModel[] = [
     { title: 'CSS', percentage: '20%' },
     { title: 'CSharp', percentage: '90%' }
   ];
 
   othersSkills: SkillModel[] = [
-    { title: 'CSSw', percentage: '11%' },
-    { title: 'CSharp2', percentage: '45%' }
+    { title: 'Bad Jokes', percentage: '11%' }
   ];
-
 
   ngOnInit() {
     this.appendCss();
@@ -48,19 +48,6 @@ export class SkillsComponent implements OnInit {
   }
 
   hiddenOthersSkills() {
-    this.hidden = !this.hidden;
-
-
-    if (!this.hidden) {
-      this.skills = this.skills.concat(
-        this.othersSkills
-      );
-
-      return;
-    }
-
-    this.skills = this.skills.filter((el) => {
-      return this.othersSkills.indexOf(el) < 0;
-    });
+    this.hidden = this.hidden === 'out' ? 'in' : 'out';
   }
 }
