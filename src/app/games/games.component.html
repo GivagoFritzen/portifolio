@@ -1,10 +1,13 @@
-<div id="splide" class="splide">
-    <div class="splide__track">
-        <ul class="splide__list">
-            <li class="splide__slide" *ngFor="let slide of slides">
-                <div>{{ slide.title }}
-                </div>
-            </li>
-        </ul>
-    </div>
-</div>
+<ngu-carousel class="games" [dataSource]="slides" [inputs]="carouselBanner" (onMove)="onmoveFn($event)"
+    [trackBy]="trackCarousel">
+    <button NguCarouselPrev class="arrow left"></button>
+
+    <ngu-item *nguCarouselDef="let item; index as i; let ani = animate" [@slider]="ani">
+        <div class="game">
+            <h1>{{ slides[i].title }}</h1>
+            <p>{{ slides[i].subtitle }}</p>
+        </div>
+    </ngu-item>
+
+    <button NguCarouselNext class="arrow right"></button>
+</ngu-carousel>

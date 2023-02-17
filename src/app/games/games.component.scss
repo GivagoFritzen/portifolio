@@ -1,14 +1,37 @@
-.splide__slide {
-    padding: 2rem;
-    width: calc(((100% + 2rem) / 3) - 2rem);
-    height: 10rem;
+.games {
+    height: 250px;
+    width: 100%;
 
-    .is-active {
-        background-color: yellow;
-    }
+    .arrow {
+        border: 0;
+        position: absolute;
+        top: 50%;
+        width: 3vmin;
+        height: 3vmin;
+        background: transparent;
+        border-top: 1vmin solid red;
+        border-right: 1vmin solid red;
 
-    div {
-        background: red;
-        height: 100%;
+        &.right {
+            margin-right: 30px;
+            transform: translate3d(0, -50%, 0) rotate(45deg);
+            right: 0;
+        }
+
+        &.left {
+            margin-left: 30px;
+            transform: translate3d(0, -50%, 0) rotate(-135deg);
+            left: 0;
+        }
     }
+}
+
+.game {
+    align-items: center;
+    //background-color: #ccc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 30px;
+    min-height: 300px;
 }

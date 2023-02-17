@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { GamesComponent } from './games/games.component';
 import { WhoComponent } from './who/who.component';
 import { SkillsComponent } from './skills/skills.component';
+import { NguCarouselModule } from '@ngu/carousel';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { SkillsComponent } from './skills/skills.component';
     SkillsComponent,
   ],
   imports: [
+    NguCarouselModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule

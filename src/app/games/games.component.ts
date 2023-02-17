@@ -1,21 +1,43 @@
-import { Component, OnInit } from '@angular/core';
-import Splide from '@splidejs/splide';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { NguCarouselConfig } from '@ngu/carousel';
+import { GameModel } from 'src/models/game.model';
+import { slider } from '../../utils/slide-animation';
 
 @Component({
   selector: 'games',
   templateUrl: './games.component.html',
-  styleUrls: ['./games.component.scss']
+  styleUrls: ['./games.component.scss'],
+  animations: [slider],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class GamesComponent implements OnInit {
-  slides: any[] = new Array(4).fill({ id: -1, src: '', title: 'Teste1', subtitle: '' });
+export class GamesComponent {
+  slides: GameModel[] = [
+    { src: '', title: 'Teste1', subtitle: 'a' },
+    { src: '', title: 'Teste2', subtitle: 'b' },
+    { src: '', title: 'Teste3', subtitle: 'c' },
+    { src: '', title: 'Teste4', subtitle: 'd' }
+  ];
 
-  constructor() { }
+  carouselBanner: NguCarouselConfig = {
+    grid: { xs: 1, sm: 1, md: 3, lg: 3, all: 0 },
+    slide: 1,
+    speed: 400,
+    interval: {
+      timing: 3000,
+      initialDelay: 1000
+    },
+    load: 2,
+    custom: 'banner',
+    loop: true,
+    touch: true,
+  };
 
-  ngOnInit(): void {
-    new Splide('.splide', {
-      type: 'loop',
-      perPage: this.slides.length,
-      focus: 'center',
-    }).mount();
+  /* It will be triggered on every slide*/
+  onmoveFn(data: any) {
+    //console.log(data);
+  }
+
+  trackCarousel(_: any, item: any) {
+    return item;
   }
 }
