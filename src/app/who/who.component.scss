@@ -26,14 +26,12 @@
         width: 3px;
         height: 50px;
         background-color: white;
-        animation: blink .75s step-end infinite;
+        animation: blink 0.75s step-end infinite;
     }
 
     @keyframes blink {
-
-        from,
-        to {
-            background-color: transparent
+        0% {
+            background-color: transparent;
         }
 
         50% {

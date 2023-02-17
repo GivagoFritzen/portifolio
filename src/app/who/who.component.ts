@@ -19,7 +19,9 @@ export class WhoComponent implements OnInit {
   // Character number of the current sentence being processed 
   PART_INDEX = 0;
 
-  INTERVAL_VAL: NodeJS.Timer = setInterval(() => { }, 50);
+  INTERVAL_VAL: NodeJS.Timer = setInterval(() => {
+    clearInterval(this.INTERVAL_VAL);
+  }, 50);
   ELEMENT?: Element | null;
   CURSOR?: HTMLElement | null;
 
@@ -34,7 +36,7 @@ export class WhoComponent implements OnInit {
   // Implements typing effect
   Type(): void {
     // Get substring with 1 characater added
-    var text = this.SENTENCES[this.PART].substring(0, this.PART_INDEX + 1);
+    const text = this.SENTENCES[this.PART].substring(0, this.PART_INDEX + 1);
     this.ELEMENT!.innerHTML = text;
     this.PART_INDEX++;
 
@@ -48,14 +50,13 @@ export class WhoComponent implements OnInit {
       setTimeout(() => {
         this.INTERVAL_VAL = setInterval(() => this.Delete(), 50);
       }, 1000);
-
     }
   }
 
   // Implements deleting effect
   Delete(): void {
     // Get substring with 1 characater deleted
-    var text = this.SENTENCES[this.PART].substring(0, this.PART_INDEX - 1);
+    const text = this.SENTENCES[this.PART].substring(0, this.PART_INDEX - 1);
     this.ELEMENT!.innerHTML = text;
     this.PART_INDEX--;
 

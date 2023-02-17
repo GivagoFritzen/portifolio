@@ -1,4 +1,7 @@
+@import '../../utils//styles/colors.scss';
+
 .games {
+    background-color: $sky-blue;
     height: 250px;
     width: 100%;
 
@@ -9,8 +12,8 @@
         width: 3vmin;
         height: 3vmin;
         background: transparent;
-        border-top: 1vmin solid red;
-        border-right: 1vmin solid red;
+        border-top: 1vmin solid white;
+        border-right: 1vmin solid white;
 
         &.right {
             margin-right: 30px;
@@ -29,6 +32,7 @@
 .game {
     align-items: center;
     //background-color: #ccc;
+    color: whitesmoke;
     display: flex;
     flex-direction: column;
     justify-content: center;

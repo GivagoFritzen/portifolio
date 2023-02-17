@@ -8,6 +8,7 @@ import { GamesComponent } from './games/games.component';
 import { WhoComponent } from './who/who.component';
 import { SkillsComponent } from './skills/skills.component';
 import { NguCarouselModule } from '@ngu/carousel';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { NguCarouselModule } from '@ngu/carousel';
     GamesComponent,
     WhoComponent,
     SkillsComponent,
+    HeaderComponent,
   ],
   imports: [
     NguCarouselModule,

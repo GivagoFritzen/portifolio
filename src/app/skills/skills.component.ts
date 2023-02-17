@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SkillModel } from 'src/models/skill.model';
-import { SlideInOutAnimation } from 'src/utils/animations';
+import { SlideInOutAnimation } from 'src/utils/animations/animations';
 
 @Component({
   selector: 'skills',
@@ -9,8 +9,7 @@ import { SlideInOutAnimation } from 'src/utils/animations';
   animations: [SlideInOutAnimation]
 })
 export class SkillsComponent implements OnInit {
-
-  hidden: string = 'out';
+  hidden = 'out';
   skills: SkillModel[] = [
     { title: 'CSS', percentage: '20%' },
     { title: 'CSharp', percentage: '90%' }
@@ -25,7 +24,7 @@ export class SkillsComponent implements OnInit {
   }
 
   appendCss() {
-    var style = document.createElement('style');
+    const style = document.createElement('style');
 
     this.addKeyFrameSkill(style, this.skills);
     this.addKeyFrameSkill(style, this.othersSkills);
