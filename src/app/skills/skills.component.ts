@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SkillModel } from 'src/models/skill.model';
-import { SlideInOutAnimation } from 'src/utils/animations/animations';
+import { SlideInOutAnimation } from 'src/utils/animations/slide-animation';
 
 @Component({
   selector: 'skills',

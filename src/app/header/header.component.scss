@@ -1,0 +1,12 @@
+@import "../../utils/styles/colors.scss";
+
+header {
+    align-items: center;
+    background-color: $sky-base;
+    color: white;
+    display: flex;
+    height: 65px;
+    justify-content: flex-start;
+    position: fixed;
+    width: 100%;
+}
