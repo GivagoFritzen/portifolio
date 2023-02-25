@@ -9,4 +9,18 @@ header {
     justify-content: flex-start;
     position: fixed;
     width: 100%;
+
+    :first-child {
+        margin-left: 25px;
+    }
+
+    button {
+        background: none;
+        border: none;
+        color: white;
+        cursor: pointer;
+        font-size: 25px;
+        font-weight: bold;
+        margin-right: 50px;
+    }
 }

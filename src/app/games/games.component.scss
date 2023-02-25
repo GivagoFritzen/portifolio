@@ -1,6 +1,6 @@
-@import '../../utils//styles/colors.scss';
+@import "../../utils//styles/colors.scss";
 
-.games {
+#games {
     background-color: $sky-blue;
     height: 250px;
     width: 100%;
@@ -31,7 +31,6 @@
 
 .game {
     align-items: center;
-    //background-color: #ccc;
     color: whitesmoke;
     display: flex;
     flex-direction: column;

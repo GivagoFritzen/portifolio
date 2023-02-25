@@ -1,6 +1,6 @@
-@import './stars.scss';
+@import "./stars.scss";
 
-.who {
+#who {
     align-items: center;
     color: white;
     display: flex;
@@ -8,7 +8,7 @@
     justify-content: center;
     width: 100%;
 
-    div {
+    .content {
         font-size: 44px;
         text-align: center;
     }

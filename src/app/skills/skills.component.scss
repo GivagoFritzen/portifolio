@@ -1,6 +1,6 @@
 @import "../../utils/styles/colors.scss";
 
-.section-skills {
+#section-skills {
     align-items: center;
     background-color: #0e101a;
     display: flex;
@@ -21,7 +21,6 @@
 
 .skills {
     color: #fff;
-    //box-shadow: 0 14px 28px rgba(0, 0, 0, 25%), 0 10px 10px rgba(0, 0, 0, 22%);
     padding: 20px;
     width: 700px;
 
@@ -35,7 +34,7 @@
     background-color: #353b48;
     display: block;
     height: 20px;
-        border-radius: 10px;
+    border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 12%), 0 1px 2px rgba(0, 0, 0, 24%);
     transition: all 0.3s cubic-bezier(0.25, 8, 0.25, 1);
