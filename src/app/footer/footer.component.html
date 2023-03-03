@@ -1,0 +1,38 @@
+<footer>
+    <div class="joystick">
+        <div class="directional">
+            <button class=crossTop (click)="joystickClick(currentButton.Up)">
+                <div class="triangle"></div>
+            </button>
+
+            <button class=crossBottom (click)="joystickClick(currentButton.Down)">
+                <div class="triangle"></div>
+            </button>
+
+            <button class=crossLeft (click)="joystickClick(currentButton.Left)">
+                <div class="triangle"></div>
+            </button>
+
+            <button class=crossRight (click)="joystickClick(currentButton.Right)">
+                <div class="triangle"></div>
+            </button>
+
+            <div>
+                <div class="circle"></div>
+            </div>
+        </div>
+
+        <div class="center">
+            <button (click)="joystickClick(currentButton.Start)">Start</button>
+            <a id="button-linkedin" href="https://www.linkedin.com/in/givago-fritzen-7b9729aa/"
+                target="_blank">Linkedin</a>
+        </div>
+        <div class="buttons">
+            <button id="button-a" (click)="joystickClick(currentButton.A)">A</button>
+            <button id="button-b" (click)="joystickClick(currentButton.B)">B</button>
+        </div>
+    </div>
+    <div class="end">
+        <p>Designed & Built by Givago Fritzen</p>
+    </div>
+</footer>

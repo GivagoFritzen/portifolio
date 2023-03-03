@@ -9,6 +9,7 @@ import { WhoComponent } from './who/who.component';
 import { SkillsComponent } from './skills/skills.component';
 import { NguCarouselModule } from '@ngu/carousel';
 import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { HeaderComponent } from './header/header.component';
     WhoComponent,
     SkillsComponent,
     HeaderComponent,
+    FooterComponent,
   ],
   imports: [
     NguCarouselModule,

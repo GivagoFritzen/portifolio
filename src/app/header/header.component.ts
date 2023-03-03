@@ -18,7 +18,6 @@ export class HeaderComponent {
     this.scroller.scrollToAnchor(id);
   }
 
-
   @HostListener('window:scroll')
   onWindowScroll() {
     let scroll = window.pageYOffset;

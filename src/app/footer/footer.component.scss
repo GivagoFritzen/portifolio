@@ -1,0 +1,17 @@
+@import "../../utils//styles/colors.scss";
+@import "./joystick.scss";
+
+footer {
+    background: $sky-base;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    justify-content: space-around;
+}
+
+.end {
+    display: flex;
+    font-weight: 900;
+    justify-content: center;
+}
