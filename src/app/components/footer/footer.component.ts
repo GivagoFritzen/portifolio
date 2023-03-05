@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Joystick } from '../../enum/joystick.enum';
+import { Joystick } from '../../../enum/joystick.enum';
 
 @Component({
   selector: 'app-footer',

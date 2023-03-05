@@ -1,6 +1,6 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
-import { HeaderAnimation } from '../../utils/animations/header-animation';
+import { HeaderAnimation } from '../../../utils/animations/header-animation';
 
 @Component({
   selector: 'app-header',

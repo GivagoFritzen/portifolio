@@ -1,0 +1,24 @@
+@import "../../../utils/styles/colors.scss";
+@import "../../../utils/styles/stars.scss";
+
+#space {
+    align-items: center;
+    color: white;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+
+    h1 {
+        font-family: "Concert One", cursive;
+        font-size: 100px;
+    }
+}
+
+@keyframes spin {
+    from {
+    }
+    to {
+        transform: rotate(random(360) + deg);
+    }
+}

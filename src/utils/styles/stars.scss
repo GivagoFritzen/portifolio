@@ -2,7 +2,7 @@
     Stars Effect
     https://github.com/WebDevSHORTS/Parallax-Star-Background
 */
-@import "../../utils/styles/colors.scss";
+@import "./colors.scss";
 
 .star-content {
     background: radial-gradient(ellipse at bottom, $sky-blue 0%, $sky-base 100%);

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NguCarouselConfig } from '@ngu/carousel';
 import { GameModel } from 'src/models/game.model';
-import { slider } from '../../utils/animations/slide-animation';
+import { slider } from '../../../utils/animations/slide-animation';
 
 @Component({
   selector: 'games',
@@ -34,7 +34,7 @@ export class GamesComponent {
 
   /* It will be triggered on every slide*/
   onmoveFn(data: any) {
-    console.log(typeof (data));
+    
   }
 
   trackCarousel(_: any, item: any) {
