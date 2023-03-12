@@ -1,5 +1,6 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { HeaderAnimation } from '../../../utils/animations/header-animation';
 
 @Component({
@@ -12,7 +13,9 @@ export class HeaderComponent {
   show = false;
   currentPosition: number = 0;
 
-  constructor(private scroller: ViewportScroller) { }
+  constructor(private scroller: ViewportScroller, private translateService: TranslateService) {
+    translateService.setDefaultLang('en-US');
+  }
 
   goToId(id: string) {
     this.scroller.scrollToAnchor(id);
@@ -27,5 +30,9 @@ export class HeaderComponent {
       this.show = false;
     }
     this.currentPosition = scroll;
+  }
+
+  switchLanguage(lang: any) {
+    this.translateService.use(lang.target.value);
   }
 }

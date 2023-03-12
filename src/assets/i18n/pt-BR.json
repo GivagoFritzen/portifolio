@@ -1,0 +1,11 @@
+{
+    "header": {
+        "who": "Quem é",
+        "skills": "Habilidades",
+        "games": "Jogos",
+        "footer": "Rodapé"
+    },
+    "skills": {
+        "bad-jokes": "Piadas Ruins"
+    }
+}

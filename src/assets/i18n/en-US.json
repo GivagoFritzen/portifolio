@@ -1,0 +1,11 @@
+{
+    "header": {
+        "who": "Who",
+        "skills": "Skills",
+        "games": "Games",
+        "footer": "Footer"
+    },
+    "skills": {
+        "bad-jokes": "Bad Jokes"
+    }
+}

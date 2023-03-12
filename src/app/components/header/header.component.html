@@ -1,6 +1,13 @@
 <header [@navUp]="show ? 'down' : 'up'">
-    <button (click)="goToId('who')">Who</button>
-    <button (click)="goToId('section-skills')">Skills</button>
-    <button (click)="goToId('games')">Games</button>
-    <button (click)="goToId('footer')">Footer</button>
+    <div>
+        <button (click)="goToId('who')">{{ 'header.who' | translate }}</button>
+        <button (click)="goToId('section-skills')">{{ 'header.skills' | translate }}</button>
+        <button (click)="goToId('games')">{{ 'header.games' | translate }}</button>
+        <button (click)="goToId('footer')">{{ 'header.footer' | translate }}</button>
+    </div>
+
+    <select name="language" (change)="switchLanguage($event)">
+        <option value="en-US">English</option>
+        <option value="pt-BR">Português</option>
+    </select>
 </header>
