@@ -16,7 +16,7 @@ export class SkillsComponent implements OnInit {
   ];
 
   othersSkills: SkillModel[] = [
-    { title: 'Bad Jokes', percentage: '11%' }
+    { title: 'skills.bad-jokes', percentage: '11%' }
   ];
 
   ngOnInit() {

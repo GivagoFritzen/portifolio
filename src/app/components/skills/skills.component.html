@@ -11,7 +11,7 @@
             </span>
         </li>
         <li *ngFor="let skill of othersSkills" [className]="hidden === 'out' ? 'hidden' : ''" [@slideInOut]="hidden">
-            <h1>{{ skill.title }}</h1>
+            <h1>{{ skill.title | translate}}</h1>
             <span class="bar">
                 <span class="{{ skill.title }}" [ngStyle]="{
                     'width': skill.percentage,
