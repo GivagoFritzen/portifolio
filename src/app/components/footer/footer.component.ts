@@ -12,7 +12,7 @@ export class FooterComponent {
   code: Joystick[] = [];
   konamiCode: Joystick[] = [
     Joystick.Up, Joystick.Up, Joystick.Down, Joystick.Down, Joystick.Left,
-    Joystick.Right, Joystick.Left, Joystick.Right, Joystick.A, Joystick.B, Joystick.Start
+    Joystick.Right, Joystick.Left, Joystick.Right, Joystick.B, Joystick.A, Joystick.Start
   ];
 
   joystickClick(button: Joystick) {

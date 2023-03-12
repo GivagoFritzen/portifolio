@@ -5,6 +5,10 @@
         "games": "Jogos",
         "footer": "Rodapé"
     },
+    "who": {
+        "fraseA": "Piadas Ruins",
+        "fraseB": "Piadas Boas"
+    },
     "skills": {
         "bad-jokes": "Piadas Ruins"
     }

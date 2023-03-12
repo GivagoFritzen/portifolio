@@ -5,6 +5,10 @@
         "games": "Games",
         "footer": "Footer"
     },
+    "who": {
+        "fraseA": "Bad Jokes",
+        "fraseB": "Good Jokes"
+    },
     "skills": {
         "bad-jokes": "Bad Jokes"
     }

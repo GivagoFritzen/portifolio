@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'who',
@@ -7,10 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WhoComponent implements OnInit {
   SENTENCES: string[] = [
-    "Twinkle, twinkle, little star",
-    "How I wonder what you are",
-    "Up above the world so high",
-    "Like a diamond in the sky"
+    "who.fraseA",
+    "who.fraseB"
   ];
 
   PART = 0;
@@ -22,6 +21,9 @@ export class WhoComponent implements OnInit {
   ELEMENT?: Element | null;
   CURSOR?: HTMLElement | null;
 
+  constructor(private translateService: TranslateService) {
+  }
+
   ngOnInit(): void {
     this.ELEMENT = document.querySelector("#text");
     this.CURSOR = document.querySelector("#cursor");
@@ -31,11 +33,11 @@ export class WhoComponent implements OnInit {
   }
 
   EffectType(): void {
-    const text = this.SENTENCES[this.PART].substring(0, this.PART_INDEX + 1);
+    const text = this.translateService.instant(this.SENTENCES[this.PART]).substring(0, this.PART_INDEX + 1);
     this.ELEMENT!.innerHTML = text;
     this.PART_INDEX++;
 
-    if (text === this.SENTENCES[this.PART]) {
+    if (text === this.translateService.instant(this.SENTENCES[this.PART])) {
       this.CURSOR!.style.display = 'none';
 
       clearInterval(this.INTERVAL_VAL);
@@ -47,7 +49,7 @@ export class WhoComponent implements OnInit {
   }
 
   EffectDelete(): void {
-    const text = this.SENTENCES[this.PART].substring(0, this.PART_INDEX - 1);
+    const text = this.translateService.instant(this.SENTENCES[this.PART]).substring(0, this.PART_INDEX - 1);
     this.ELEMENT!.innerHTML = text;
     this.PART_INDEX--;
 
