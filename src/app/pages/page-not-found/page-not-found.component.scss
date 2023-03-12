@@ -1,24 +1,46 @@
 @import "../../../utils/styles/colors.scss";
 @import "../../../utils/styles/stars.scss";
 
-#space {
+#space,
+#numbers {
     align-items: center;
     color: white;
     display: flex;
     justify-content: center;
+}
+
+#space {
+    flex-direction: column;
     height: 100vh;
+    overflow: hidden;
     width: 100vw;
 
     h1 {
         font-family: "Concert One", cursive;
         font-size: 100px;
+        text-shadow: 0 0 2px $sky-base;
     }
-}
 
-@keyframes spin {
-    from {
+    @media only screen and (min-width: 768px) {
+        h1 {
+            font-size: 150px;
+        }
     }
-    to {
-        transform: rotate(random(360) + deg);
+
+    @media only screen and (min-width: 1024px) {
+        h1 {
+            font-size: 200px;
+        }
+    }
+
+    @media only screen and (min-width: 1024px) {
+        h1 {
+            font-size: 400px;
+        }
+    }
+
+    #space-text {
+        position: relative;
+        top: 50px;
     }
 }
