@@ -1,5 +1,6 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { HeaderAnimation } from '../../../utils/animations/header-animation';
 
@@ -10,19 +11,29 @@ import { HeaderAnimation } from '../../../utils/animations/header-animation';
   animations: [HeaderAnimation],
 })
 export class HeaderComponent {
-  show = false;
+  show: boolean = false;
+  isHome: boolean = false;
+
   currentPosition: number = 0;
 
-  constructor(private scroller: ViewportScroller, private translateService: TranslateService) {
+  constructor(private scroller: ViewportScroller, private translateService: TranslateService, private router: Router) {
+    this.isHome = window.location.pathname !== '/';
+
     translateService.setDefaultLang('en-US');
   }
 
-  goToId(id: string) {
+  goToId(id: string): void {
     this.scroller.scrollToAnchor(id);
   }
 
+  goHome(): void {
+    this.router.navigateByUrl('').then(() => {
+      window.location.reload();
+    });
+  }
+
   @HostListener('window:scroll')
-  onWindowScroll() {
+  onWindowScroll(): void {
     let scroll = window.pageYOffset;
     if (scroll > this.currentPosition || this.currentPosition == 0) {
       this.show = true;
@@ -32,7 +43,7 @@ export class HeaderComponent {
     this.currentPosition = scroll;
   }
 
-  switchLanguage(lang: any) {
+  switchLanguage(lang: any): void {
     this.translateService.use(lang.target.value);
   }
 }

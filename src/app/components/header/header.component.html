@@ -1,9 +1,13 @@
 <header [@navUp]="show ? 'down' : 'up'">
-    <div>
+    <div [hidden]="isHome">
         <button (click)="goToId('who')">{{ 'header.who' | translate }}</button>
         <button (click)="goToId('section-skills')">{{ 'header.skills' | translate }}</button>
         <button (click)="goToId('games')">{{ 'header.games' | translate }}</button>
         <button (click)="goToId('footer')">{{ 'header.footer' | translate }}</button>
+    </div>
+
+    <div [hidden]="!isHome">
+        <button (click)="goHome()">{{ 'header.home' | translate }}</button>
     </div>
 
     <select name="language" (change)="switchLanguage($event)">

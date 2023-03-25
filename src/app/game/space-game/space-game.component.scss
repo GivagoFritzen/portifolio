@@ -1,0 +1,11 @@
+@import "../../../utils//styles/colors.scss";
+
+canvas {
+    /// Credits:
+    /// https://opengameart.org/content/space-background-7
+    background-image: url("../../../assets/game/bg_space_seamless.png");
+    background-color: $sky-base;
+    left: 0;
+    position: fixed;
+    top: 0;
+}

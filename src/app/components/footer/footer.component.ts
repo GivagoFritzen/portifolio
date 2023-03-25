@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Joystick } from '../../../enum/joystick.enum';
 
 @Component({
@@ -15,6 +16,8 @@ export class FooterComponent {
     Joystick.Right, Joystick.Left, Joystick.Right, Joystick.B, Joystick.A, Joystick.Start
   ];
 
+  constructor(private router: Router) { }
+
   joystickClick(button: Joystick) {
     this.code.push(button);
 
@@ -23,7 +26,10 @@ export class FooterComponent {
     }
 
     if (JSON.stringify(this.code) === JSON.stringify(this.konamiCode)) {
-      console.log('KONAMI CODE');
+      localStorage.setItem("Secret", "KONAMI CODE");
+      this.router.navigateByUrl('/secret').then(() => {
+        window.location.reload();
+      });
     }
   }
 }
