@@ -16,6 +16,7 @@ import { PageHomeComponent } from './pages/page-home/page-home.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { SpaceGameComponent } from './game/space-game/space-game.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { SpaceGameComponent } from './game/space-game/space-game.component';
     FooterComponent,
     PageNotFoundComponent,
     PageHomeComponent,
-    SpaceGameComponent
+    SpaceGameComponent,
+    ModalComponent
   ],
   imports: [
     NguCarouselModule,

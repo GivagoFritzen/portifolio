@@ -8,7 +8,6 @@ import { ObstacleModel } from './model/obstacle.model';
   templateUrl: './space-game.component.html',
   styleUrls: ['./space-game.component.scss']
 })
-//https://www.codershood.info/2018/03/02/building-2d-racing-game-using-angular/
 export class SpaceGameComponent implements AfterViewInit {
   @ViewChild('canvas', { static: true })
   canvas!: ElementRef<HTMLCanvasElement>;
@@ -17,6 +16,7 @@ export class SpaceGameComponent implements AfterViewInit {
   headerSize: number = 65;
   frameNumber: number = 0;
 
+  gameOver: boolean = false;
   gameLoop?: NodeJS.Timer;
   playerImg: any = new Image();
 
@@ -25,7 +25,7 @@ export class SpaceGameComponent implements AfterViewInit {
 
   constructor(private router: Router) {
     if (localStorage.getItem("Secret") == null)
-      this.router.navigateByUrl('');
+      this.goHome();
   }
 
   ngAfterViewInit(): void {
@@ -43,6 +43,9 @@ export class SpaceGameComponent implements AfterViewInit {
 
   startGameLoop() {
     this.gameLoop = setInterval(() => {
+      if (this.gameOver)
+        return;
+
       this.frameNumber += 1;
       this.cleanGround();
       this.createObstacles();
@@ -114,6 +117,11 @@ export class SpaceGameComponent implements AfterViewInit {
         fallAxisY: direction
       };
 
+      if (window.innerWidth <= 768) {
+        obstacle.width /= 2;
+        obstacle.height /= 2;
+      }
+
       this.obstacles.push(obstacle);
     }
   }
@@ -132,7 +140,7 @@ export class SpaceGameComponent implements AfterViewInit {
       );
 
       if (this.detectCrash(element)) {
-        alert('Game Over');
+        this.gameOver = true;
       }
 
       if (element.y > map.height) {
@@ -150,6 +158,23 @@ export class SpaceGameComponent implements AfterViewInit {
     }
 
     return true;
+  }
+
+  resetGame = (): void => {
+    console.log('reset')
+    player.x = window.innerWidth / 2;
+    player.y = window.innerHeight / 2;
+    this.obstacles = [];
+    clearInterval(this.gameLoop);
+    this.cleanGround();
+    this.gameOver = false;
+    this.startGameLoop();
+  }
+
+  goHome = (): void => {
+    this.router.navigateByUrl('').then(() => {
+      window.location.reload();
+    });
   }
 
   cleanGround(): void {

@@ -1,0 +1,20 @@
+<div #modal [className]="!hidden ? '' : 'modal'">
+    <div class="modal-box">
+        <div class="modal-content">
+            <div>
+                <button id="closeModal" (click)="closeModal()">X</button>
+            </div>
+
+            <h1>{{title | translate}}</h1>
+            <p>{{text| translate}}</p>
+
+            <div class="modal-buttons">
+                <button id="closeModalButton" (click)="closeModal()">{{'modal.close' | translate}}</button>
+                <button [style.display]="functionToOkButtonModal === undefined ? 'none' : ''" id="okModalButton"
+                    (click)="okButton()">
+                    {{buttonText | translate}}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

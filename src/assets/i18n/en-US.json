@@ -12,5 +12,10 @@
     },
     "skills": {
         "bad-jokes": "Bad Jokes"
+    },
+    "modal": {
+        "home": "Home",
+        "game-over": "Game Over",
+        "close": "Close"
     }
 }

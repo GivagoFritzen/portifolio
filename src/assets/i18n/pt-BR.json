@@ -12,5 +12,10 @@
     },
     "skills": {
         "bad-jokes": "Piadas Ruins"
+    },
+    "modal": {
+        "home": "Página Inicial",
+        "game-over": "Fim de Jogo",
+        "close": "Fechar"
     }
 }
