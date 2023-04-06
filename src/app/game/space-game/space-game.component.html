@@ -1,3 +1,26 @@
 <modal [hidden]=gameOver [functionToCloseModal]="resetGame" [functionToOkButtonModal]="goHome" title="modal.game-over"
     buttonText="modal.home" />
+
+<div class="directional">
+    <button class=crossTop (click)="moveUp()">
+        <div class="triangle"></div>
+    </button>
+
+    <button class=crossBottom (click)="moveDown()">
+        <div class="triangle"></div>
+    </button>
+
+    <button class=crossLeft (click)="moveLeft()">
+        <div class="triangle"></div>
+    </button>
+
+    <button class=crossRight (click)="moveRight()">
+        <div class="triangle"></div>
+    </button>
+
+    <div>
+        <div class="circle"></div>
+    </div>
+</div>
+
 <canvas #canvas></canvas>

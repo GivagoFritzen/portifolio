@@ -69,34 +69,48 @@ export class SpaceGameComponent implements AfterViewInit {
 
   movePlayer(event: KeyboardEvent, type: string): void {
     if (type === 'keydown') {
-      if (event.key === 'ArrowLeft' || event.key === 'A' || event.key === 'a') {
-        if (player.x === 0 || player.x < 0) {
-          player.x = 0;
-        } else {
-          player.x -= player.speed;
-        }
-      } else if (event.key === 'ArrowRight' || event.key === 'D' || event.key === 'd') {
-        if (player.x + player.width === map.width ||
-          player.x + player.width > map.width) {
-          player.x = map.width - player.width;
-        } else {
-          player.x += player.speed;
-        }
-      }
-      else if (event.key === 'ArrowUp' || event.key === 'W' || event.key === 'w') {
-        if (player.y === 0 + this.headerSize || player.y < this.headerSize) {
-          player.y = this.headerSize;
-        } else {
-          player.y -= player.speed;
-        }
-      } else if (event.key === 'ArrowDown' || event.key === 'S' || event.key === 's') {
-        if (player.y + player.height === map.height ||
-          player.y + player.height > map.height) {
-          player.y = map.height - player.height;
-        } else {
-          player.y += player.speed;
-        }
-      }
+      if (event.key === 'ArrowLeft' || event.key === 'A' || event.key === 'a')
+        this.moveLeft();
+      else if (event.key === 'ArrowRight' || event.key === 'D' || event.key === 'd')
+        this.moveRight();
+      else if (event.key === 'ArrowUp' || event.key === 'W' || event.key === 'w')
+        this.moveUp();
+      else if (event.key === 'ArrowDown' || event.key === 'S' || event.key === 's')
+        this.moveDown();
+    }
+  }
+
+  moveLeft(): void {
+    if (player.x === 0 || player.x < 0) {
+      player.x = 0;
+    } else {
+      player.x -= player.speed;
+    }
+  }
+
+  moveRight() {
+    if (player.x + player.width === map.width ||
+      player.x + player.width > map.width) {
+      player.x = map.width - player.width;
+    } else {
+      player.x += player.speed;
+    }
+  }
+
+  moveUp() {
+    if (player.y === 0 + this.headerSize || player.y < this.headerSize) {
+      player.y = this.headerSize;
+    } else {
+      player.y -= player.speed;
+    }
+  }
+
+  moveDown() {
+    if (player.y + player.height === map.height ||
+      player.y + player.height > map.height) {
+      player.y = map.height - player.height;
+    } else {
+      player.y += player.speed;
     }
   }
 

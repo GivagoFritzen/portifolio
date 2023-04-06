@@ -21,7 +21,15 @@
 .skills {
     color: #fff;
     padding: 20px;
-    width: 700px;
+    width: 250px;
+
+    @media only screen and (min-width: 375px) {
+        width: 333px;
+    }
+
+    @media only screen and (min-width: 700px) {
+        width: 700px;
+    }
 
     h1 {
         color: white;

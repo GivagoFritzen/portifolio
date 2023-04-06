@@ -12,7 +12,11 @@ export class SkillsComponent implements OnInit {
   hidden = 'out';
   skills: SkillModel[] = [
     { title: 'CSS', percentage: '20%' },
-    { title: 'CSharp', percentage: '90%' }
+    { title: 'React', percentage: '90%' },
+    { title: 'Angular', percentage: '90%' },
+    { title: 'CSharp', percentage: '90%' },
+    { title: 'SQL', percentage: '90%' },
+    { title: 'Mongo', percentage: '90%' }
   ];
 
   othersSkills: SkillModel[] = [
