@@ -7,11 +7,16 @@
         "home": "Home"
     },
     "who": {
+        "is": "Who is Givago?",
         "fraseA": "Bad Jokes",
         "fraseB": "Good Jokes"
     },
     "skills": {
+        "title": "Skills",
         "bad-jokes": "Bad Jokes"
+    },
+    "games": {
+        "made": "Games I worked on"
     },
     "modal": {
         "home": "Home",

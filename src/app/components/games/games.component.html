@@ -1,13 +1,15 @@
-<ngu-carousel id="games" [dataSource]="slides" [inputs]="carouselBanner" (onMove)="onmoveFn($event)"
-    [trackBy]="trackCarousel">
-    <button NguCarouselPrev class="arrow left"></button>
+<section id="games">
+    <h1>{{ 'games.made' | translate }}</h1>
+    <ngu-carousel [dataSource]="slides" [inputs]="carouselBanner" (onMove)="onmoveFn($event)" [trackBy]="trackCarousel">
+        <button NguCarouselPrev class="arrow left"></button>
 
-    <ngu-item *nguCarouselDef="let item; index as i; let ani = animate" [@slider]="ani">
-        <div class="game">
-            <h1>{{ slides[i].title }}</h1>
-            <p>{{ slides[i].subtitle }}</p>
-        </div>
-    </ngu-item>
+        <ngu-item *nguCarouselDef="let item; index as i; let ani = animate" [@slider]="ani">
+            <div class="game">
+                <h2>{{ slides[i].title }}</h2>
+                <img src='{{ "../../../assets/games/" + slides[i].imageSrc + ".jpg" }}'/>
+            </div>
+        </ngu-item>
 
-    <button NguCarouselNext class="arrow right"></button>
-</ngu-carousel>
+        <button NguCarouselNext class="arrow right"></button>
+    </ngu-carousel>
+</section>

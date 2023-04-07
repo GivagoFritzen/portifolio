@@ -1,7 +1,8 @@
 <section id="section-skills">
+    <h1>{{ 'skills.title' | translate}}</h1>
     <ul class="skills">
         <li *ngFor="let skill of skills">
-            <h1>{{ skill.title }}</h1>
+            <h2>{{ skill.title }}</h2>
             <span class="bar">
                 <span class="{{ skill.title }}" [ngStyle]="{
                     'width': skill.percentage,
@@ -11,7 +12,7 @@
             </span>
         </li>
         <li *ngFor="let skill of othersSkills" [className]="hidden === 'out' ? 'hidden' : ''" [@slideInOut]="hidden">
-            <h1>{{ skill.title | translate}}</h1>
+            <h2>{{ skill.title | translate}}</h2>
             <span class="bar">
                 <span class="{{ skill.title }}" [ngStyle]="{
                     'width': skill.percentage,

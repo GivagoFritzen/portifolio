@@ -44,6 +44,10 @@ header {
             overflow: hidden;
             width: 100%;
         }
+
+        button {
+            min-width: 105px;
+        }
     }
 
     .menu {
@@ -80,7 +84,11 @@ header {
         color: white;
         font-size: 25px;
         font-weight: bold;
-        margin-right: 40px;
+        margin-right: 0;
+
+        @media only screen and (min-width: 700px) {
+            margin-right: 40px;
+        }
     }
 
     option {

@@ -7,11 +7,16 @@
         "home": "Página Inicial"
     },
     "who": {
+        "is": "Quem é Givago?",
         "fraseA": "Piadas Ruins",
         "fraseB": "Piadas Boas"
     },
     "skills": {
+        "title": "Habilidades",
         "bad-jokes": "Piadas Ruins"
+    },
+    "games": {
+        "made": "Jogos que eu trabalhei"
     },
     "modal": {
         "home": "Página Inicial",

@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NguCarouselConfig } from '@ngu/carousel';
-import { GameModel } from 'src/models/game.model';
+import { slides } from './games';
 import { slider } from '../../../utils/animations/slide-animation';
+import { GameModel } from 'src/models/game.model';
 
 @Component({
   selector: 'games',
@@ -11,12 +12,7 @@ import { slider } from '../../../utils/animations/slide-animation';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GamesComponent {
-  slides: GameModel[] = [
-    { src: '', title: 'Teste1', subtitle: 'a' },
-    { src: '', title: 'Teste2', subtitle: 'b' },
-    { src: '', title: 'Teste3', subtitle: 'c' },
-    { src: '', title: 'Teste4', subtitle: 'd' }
-  ];
+  slides: GameModel[] = slides;
 
   carouselBanner: NguCarouselConfig = {
     grid: { xs: 1, sm: 1, md: 3, lg: 3, all: 0 },
@@ -34,7 +30,7 @@ export class GamesComponent {
 
   /* It will be triggered on every slide*/
   onmoveFn(data: any) {
-    
+
   }
 
   trackCarousel(_: any, item: any) {
