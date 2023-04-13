@@ -1,26 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SpaceGameComponent } from './game/space-game/space-game.component';
-import { PageHomeComponent } from './pages/page-home/page-home.component';
-import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: PageHomeComponent,
-    children: []
+    loadChildren: () => import('./pages/page-home/page-home.module').then(m => m.PageHomeModule),
   },
   {
     path: 'secret',
     pathMatch: 'full',
-    component: SpaceGameComponent,
-    children: []
+    loadChildren: () => import('./pages/space-game/space-game.module').then(m => m.SpaceGameModule),
   },
   {
     path: '404',
-    component: PageNotFoundComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    loadChildren: () => import('./pages/page-not-found/page-not-found.module').then(m => m.PageNotFoundModule),
   },
   {
     path: '**', redirectTo: '/404'

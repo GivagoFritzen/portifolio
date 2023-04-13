@@ -175,7 +175,6 @@ export class SpaceGameComponent implements AfterViewInit {
   }
 
   resetGame = (): void => {
-    console.log('reset')
     player.x = window.innerWidth / 2;
     player.y = window.innerHeight / 2;
     this.obstacles = [];
