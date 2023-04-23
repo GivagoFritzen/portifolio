@@ -1,4 +1,4 @@
-<div #modal [className]="!hidden ? '' : 'modal'">
+<div #modal *ngIf="hidden" class="modal">
     <div class="modal-box">
         <div class="modal-content">
             <div>

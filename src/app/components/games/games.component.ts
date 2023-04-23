@@ -14,6 +14,9 @@ import { GameModel } from 'src/models/game.model';
 export class GamesComponent {
   slides: GameModel[] = slides;
 
+  showGame: boolean = false;
+  currentGame: GameModel = new GameModel();
+
   carouselBanner: NguCarouselConfig = {
     grid: { xs: 1, sm: 1, md: 3, lg: 3, all: 0 },
     slide: 1,
@@ -35,5 +38,14 @@ export class GamesComponent {
 
   trackCarousel(_: any, item: any) {
     return item;
+  }
+
+  seeMore(game: GameModel): void {
+    this.currentGame = game;
+    this.showGame = true;
+  }
+
+  closeModal = (): void => {
+    this.showGame = false;
   }
 }

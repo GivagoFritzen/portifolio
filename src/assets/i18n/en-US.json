@@ -16,11 +16,25 @@
         "bad-jokes": "Bad Jokes"
     },
     "games": {
-        "made": "Games I worked on"
+        "made": "Games I worked on",
+        "bearinc": "In this game you must help the sad people and catch the lollipops. (just get close to the sad people)\n\nUse the mouse to rotate and use the mouse click to start\n\nDeveloped in the Jam of the Bourbon Game Show 2017.",
+        "blindway": "Sometimes the biggest challenge, we do not see, In this game you are a blind man who must flee from the sinking ship.\nThis game was made in the Rainbow Jam Mini Challenge : Just Noise\n\nUse WASD keys to move and use the mouse to rotate.",
+        "trash": "A game where the goal is to throw the ball of paper in the trash.\n\nLook with the mouse and shoot.",
+        "wars": "This was my first game (containing some bugs).\n\nHere you choose which type of gladiator to be and must face waves of enemies.\n\nUse WASD keys to move and use the mouse to rotate. And Click to attack.",
+        "wave-makers": "A local multiplayer competitive game where the players must create waves in the water in order to push each other boats to the explosive mines.",
+        "zombies-kill": "A mini game in which you must kill all zombies in the game.",
+        "damas-crazy": "Based on the game of checkers, the idea was to add new features to create something new. Adding a trap system.\n\nSelect the traps and place them, after that, play this Damas Crazy.",
+        "death-poa": "What if a Zombie Apocalypse happened in Porto Alegre? Command JP, a soldier on a mission to try to keep the Public Market isolated from infected civilians.",
+        "into-the-slumber": "You’ve lost your tool on the sewer, now you need to get them back.\n\nInto the Sumbler is a physics based platform game.",
+        "salvor": "Salvor is a third-person top-down shooter for iOS and Android. An awesome game where the player is exploring different scenarios and facing a wide variety of enemies in order to collect all sorts of loot.",
+        "light": "Light is a game where you controll a light spark with the objective to reach the lamppost in the mountain while facing decisions in the path.\n\nThis game was done at GGJ18. This is an updated version. Containing a game executable and project.",
+        "inside-self": "Often we struggle to find ourselves, to find our safe and comfortable place. We shouldn't be searching; instead, it's time to put things in order.",
+        "random-keys": "Random Keys it's just an idea put on paper.\nInitially\nW / S to move forward and backward\nA / D to rotate on shafts\nK to shoot\nAfter\nThe keys are randomized on the keyboard after X time. (It is your duty to find.)\nThe purple keys will be the random ones"
     },
     "modal": {
         "home": "Home",
         "game-over": "Game Over",
-        "close": "Close"
+        "close": "Close",
+        "link": "Link"
     }
 }

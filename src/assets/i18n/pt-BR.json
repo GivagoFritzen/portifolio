@@ -16,11 +16,25 @@
         "bad-jokes": "Piadas Ruins"
     },
     "games": {
-        "made": "Jogos que eu trabalhei"
+        "made": "Jogos que eu trabalhei",
+        "bearinc": "Neste jogo você deve ajudar as pessoas tristes e pegar os pirulitos. (é só chegar perto das pessoas tristes)\n\nUse o mouse para girar e use o clique do mouse para iniciar\n\nDesenvolvido no Jam da Bourbon Game Show 2017.",
+        "blindway": "Às vezes, o maior desafio, não vemos, neste jogo você é um cego que deve fugir do navio que está afundando.\nEste jogo foi feito no Rainbow Jam Mini Challenge: Just Noise\n\nUse as teclas WASD para mover e usar o mouse para girar.",
+        "trash": "Um jogo onde o objetivo é jogar a bola de papel no lixo.\n\nOlhe com o mouse e atire.",
+        "wars": "Este foi o meu primeiro jogo (contendo alguns bugs).\n\nAqui você escolhe que tipo de gladiador quer ser e deve enfrentar ondas de inimigos.\n\nUse as teclas WASD para mover e use o mouse para girar. E clique para atacar .",
+        "wave-makers": "Um jogo competitivo multijogador local onde os jogadores devem criar ondas na água para empurrar os barcos uns dos outros para as minas explosivas.",
+        "zombies-kill": "Um minijogo no qual você deve matar todos os zumbis do jogo.",
+        "damas-crazy": "Baseado no jogo de damas, a ideia era adicionar novos recursos para criar algo novo. Adicionar um sistema de armadilhas.\n\nSelecione as armadilhas e coloque-as, depois disso, jogue este Damas Crazy.",
+        "death-poa": "E se um Apocalipse Zumbi acontecesse em Porto Alegre? Comande JP, um soltado na missão de tentar manter o Mercado Público isolado dos civis contaminados.",
+        "into-the-slumber": "Você perdeu sua ferramenta no esgoto, agora precisa recuperá-la.\n\nInto the Sumbler é um jogo de plataforma baseado em física.",
+        "salvor": "Salvor é um shooter top-down em terceira pessoa para iOS e Android. Um jogo incrível onde o jogador está explorando diferentes cenários e enfrentando uma grande variedade de inimigos para coletar todo tipo de saque.",
+        "light": "Light é um jogo onde você controla uma faísca de luz com o objetivo de alcançar o poste na montanha enquanto toma decisões no caminho.\n\nEste jogo foi feito no GGJ18. Esta é uma versão atualizada. Contendo um executável de jogo e um projeto.",
+        "inside-self": "Muitas vezes lutamos para nos encontrar, para encontrar nosso lugar seguro e confortável. Não deveríamos estar procurando; em vez disso, é hora de colocar as coisas em ordem.",
+        "random-keys": "Random Keys é apenas uma ideia colocada no papel.\nInicialmente\nW/S para mover para frente e para trás\nA / D para girar nos eixos\nK para atirar\nDepois\nAs teclas são randomizadas no teclado após X tempo. (É seu dever encontrar.)\nAs teclas roxas serão as aleatórias"
     },
     "modal": {
         "home": "Página Inicial",
         "game-over": "Fim de Jogo",
-        "close": "Fechar"
+        "close": "Fechar",
+        "link": "Link"
     }
 }

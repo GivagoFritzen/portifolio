@@ -14,7 +14,7 @@ export class ModalComponent {
   public buttonText: string = "";
 
   @Input()
-  public hidden: boolean = false;
+  public hidden: boolean = true;
   @Input()
   public functionToOkButtonModal: Function | undefined;
   @Input()

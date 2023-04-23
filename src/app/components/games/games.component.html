@@ -1,3 +1,5 @@
+<modal-game [hidden]=showGame [functionToCloseModal]="closeModal" [game]=currentGame />
+
 <section id="games">
     <h1>{{ 'games.made' | translate }}</h1>
     <ngu-carousel [dataSource]="slides" [inputs]="carouselBanner" (onMove)="onmoveFn($event)" [trackBy]="trackCarousel">
@@ -7,7 +9,9 @@
             <div class="game">
                 <h2>{{ slides[i].title }}</h2>
                 <img src='{{ "../../../assets/games/" + slides[i].imageSrc + ".jpg" }}' />
-                <button class="see-more"><span>ver mais...</span></button>
+                <button class="see-more" (click)="seeMore(slides[i])">
+                    <span>ver mais...</span>
+                </button>
             </div>
         </ngu-item>
 

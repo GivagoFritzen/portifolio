@@ -8,9 +8,11 @@ import { NguCarouselModule } from '@ngu/carousel';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ModalGameComponent } from 'src/app/components/modal/modal-game.component';
 
 @NgModule({
     declarations: [
+        ModalGameComponent,
         PageHomeComponent,
         GamesComponent,
         SkillsComponent,
