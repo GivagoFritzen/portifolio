@@ -1,6 +1,6 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, HostListener, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { HeaderAnimation } from '../../../utils/animations/header-animation';
 
@@ -26,6 +26,12 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.CHECKBOX = document.querySelector("#hamburger-menu-toggle");
+
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.isHome = event.urlAfterRedirects == '/';
+      }
+    });
   }
 
   @HostListener('window:scroll')
@@ -54,9 +60,7 @@ export class HeaderComponent implements OnInit {
   }
 
   goHome(): void {
-    this.router.navigateByUrl('').then(() => {
-      window.location.reload();
-    });
+    this.router.navigateByUrl('');
   }
 
   switchLanguage(lang: any): void {

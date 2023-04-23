@@ -27,9 +27,7 @@ export class FooterComponent {
 
     if (JSON.stringify(this.code) === JSON.stringify(this.konamiCode)) {
       localStorage.setItem("Secret", "KONAMI CODE");
-      this.router.navigateByUrl('/secret').then(() => {
-        window.location.reload();
-      });
+      this.router.navigateByUrl('/secret');
     }
   }
 }

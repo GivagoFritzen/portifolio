@@ -185,9 +185,7 @@ export class SpaceGameComponent implements AfterViewInit {
   }
 
   goHome = (): void => {
-    this.router.navigateByUrl('').then(() => {
-      //window.location.reload();
-    });
+    this.router.navigateByUrl('');
   }
 
   cleanGround(): void {
