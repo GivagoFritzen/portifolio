@@ -7,10 +7,12 @@
 
         <ngu-item *nguCarouselDef="let item; index as i; let ani = animate" [@slider]="ani">
             <div class="game">
-                <h2>{{ slides[i].title }}</h2>
-                <img src='{{ "../../../assets/games/" + slides[i].imageSrc + ".jpg" }}' />
-                <button class="see-more" (click)="seeMore(slides[i])">
-                    <span>ver mais...</span>
+                <button (click)="seeMore(slides[i])">
+                    <h2>{{ slides[i].title }}</h2>
+                    <img src='{{ "../../../assets/games/" + slides[i].imageSrc + ".jpg" }}' />
+                    <button class="see-more">
+                        <span>ver mais...</span>
+                    </button>
                 </button>
             </div>
         </ngu-item>

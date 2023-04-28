@@ -17,19 +17,27 @@ export class GamesComponent {
   showGame: boolean = false;
   currentGame: GameModel = new GameModel();
 
+  // Width / 480
   carouselBanner: NguCarouselConfig = {
-    grid: { xs: 1, sm: 1, md: 3, lg: 3, all: 0 },
+    grid: { xs: 1, sm: 2, md: 2, lg: 3, all: 0 },
     slide: 1,
-    speed: 400,
+    speed: 0,
+    /*
     interval: {
       timing: 3000,
       initialDelay: 1000
     },
+    */
     load: 2,
     custom: 'banner',
     loop: true,
     touch: true,
   };
+
+  constructor() {
+    const mediaSlide = 480;
+    this.carouselBanner.grid.lg = Math.floor(window.innerWidth / mediaSlide);
+  }
 
   /* It will be triggered on every slide*/
   onmoveFn(data: any) {
