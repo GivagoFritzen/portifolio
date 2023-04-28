@@ -7,16 +7,21 @@
 
                 Mostrar title em cima
             -->
-            <div id="modal-header">
-                <button id="closeModal" (click)="closeModal()">X</button>
+            <div class="modal-header">
+                <!--<button id="closeModal" (click)="closeModal()">X</button>-->
                 <img src='{{ "../../../assets/games/" + game!.imageSrc + ".jpg" }}' />
-                <h1>{{title | translate}}</h1>
             </div>
-            <p>{{text| translate}}</p>
 
-            <div class="modal-buttons">
-                <a id="okModalButton" href='{{game!.src}}' target="_blank">{{'modal.link' | translate}}</a>
-                <button id="closeModalButton" (click)="closeModal()">{{'modal.close' | translate}}</button>
+            <div class="modal-text">
+                <span>
+                    <h1>{{title | translate}}</h1>
+                    <p>{{text| translate}}</p>
+                </span>
+
+                <div class="modal-buttons">
+                    <a id="okModalButton" href='{{game!.src}}' target="_blank">{{'modal.link' | translate}}</a>
+                    <button id="closeModalButton" (click)="closeModal()">{{'modal.close' | translate}}</button>
+                </div>
             </div>
         </div>
     </div>

@@ -3,50 +3,108 @@
 .modal-box {
     border-radius: 15px;
     padding: 0;
+    width: 100%;
+
+    @media only screen and (min-width: 768px) {
+        max-width: 800px;
+        width: 80vw;
+    }
+
+    h1 {
+        color: black;
+        font-size: 55px;
+        font-weight: bold;
+        margin-left: 15px;
+        text-align: left;
+    }
 
     p {
+        max-height: 30vh;
+        overflow: auto;
         white-space: pre-wrap;
     }
 }
 
-#modal-header {
+.modal-content {
+    @media only screen and (min-width: 1440px) {
+        flex-direction: row;
+    }
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
+    width: 100%;
+
+    @media only screen and (min-width: 1440px) {
+        width: 50%;
+    }
 
     img {
         border-radius: 9px 9px 0 0;
-        width: 100%;
-    }
+        margin-top: 0;
+        max-width: 100%;
 
-    h1 {
-        bottom: 10px;
-        color: white;
-        font-size: 55px;
-        font-weight: bold;
-        left: 10px;
-        position: absolute;
-        text-shadow: 0 0 5px black;
+        @media only screen and (min-width: 768px) {
+            aspect-ratio: 5/3;
+            border-radius: 0;
+            max-height: 25vh;
+            margin-top: 10px;
+        }
+
+        @media only screen and (min-width: 1440px) {
+            flex-direction: row;
+            margin-top: 0px;
+        }
     }
 
     #closeModal {
+        font-family: system-ui;
+        margin: 15px 15px 0 0;
         position: absolute;
         right: 0;
         top: 0;
     }
 }
 
-#closeModal {
-    margin: 15px 15px 0 0;
+.modal-text {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+
+    @media only screen and (min-width: 1440px) {
+        height: 40vh;
+        justify-content: space-between;
+        max-height: 450px;
+        padding-left: 15px;
+        width: 50%;
+    }
 }
 
 .modal-buttons {
     flex-direction: column;
 
     #okModalButton {
-        width: 100%;
+        border-radius: 0;
     }
 
     #closeModalButton {
         border-radius: 0 0 9px 9px;
+
+        @media only screen and (min-width: 1440px) {
+            border-radius: 0 0 9px 0;
+        }
+    }
+
+    #okModalButton,
+    #closeModalButton {
+        font-size: 16px;
         width: 100%;
+
+        @media only screen and (min-width: 768px) {
+            height: 40px;
+        }
     }
 }
