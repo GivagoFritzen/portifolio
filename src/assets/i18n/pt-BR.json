@@ -36,5 +36,14 @@
         "game-over": "Fim de Jogo",
         "close": "Fechar",
         "link": "Link"
+    },
+    "not-found": {
+        "here": "Acho que você não deveria estar aqui",
+        "lost": "Nem todos os que vagueiam estão perdidos,\nmas você com certeza está",
+        "rich": "Se perdido fosse dinheiro,\nvocê seria rico",
+        "gps": "Tão perdido que nem o GPS consegue ajudar",
+        "places": "Não está perdido,\nsó está explorando novos lugares",
+        "not-right": "Algo de errado não está certo",
+        "never": "Vamos fingir que você nunca esteve aqui"
     }
 }

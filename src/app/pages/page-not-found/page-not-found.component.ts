@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { gsap, Linear } from 'gsap';
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import { Position } from 'src/models/position.model';
@@ -17,10 +18,20 @@ export class PageNotFoundComponent implements OnInit {
   DURATION: number = 250;
 
   SENTENCES: string[] = [
-    "Rapaz vc se perdeu",
-    "Perdemo",
-    "Teste"
+    "not-found.here",
+    "not-found.lost",
+    "not-found.rich",
+    "not-found.gps",
+    "not-found.places",
+    "not-found.not-right",
+    "not-found.never"
   ];
+
+  constructor(private translateService: TranslateService) {
+    translateService.onLangChange.subscribe(lang => {
+      this.setSpaceTextByLanguage();
+    })
+  }
 
   ngOnInit(): void {
     gsap.registerPlugin(MotionPathPlugin);
@@ -35,7 +46,8 @@ export class PageNotFoundComponent implements OnInit {
     this.randomAnimate(this.THIRDNUMBER!);
 
     this.randomAnimateSpaceText(this.SPACETEXT!, this.DURATION);
-    this.SPACETEXT!.firstChild!.textContent = this.SENTENCES[this.randomIntFromInterval(0, this.SENTENCES.length - 1)];
+
+    this.setSpaceTextByLanguage();
   }
 
   randomAnimate(element: HTMLElement): void {
@@ -76,7 +88,11 @@ export class PageNotFoundComponent implements OnInit {
     }).progress(0.25);
   }
 
-  private randomRotation(element: HTMLElement) {
+  private setSpaceTextByLanguage() {
+    this.SPACETEXT!.firstChild!.textContent = this.translateService.instant(this.SENTENCES[this.randomIntFromInterval(0, this.SENTENCES.length - 1)]);
+  }
+
+  private randomRotation(element: HTMLElement): void {
     const randomNumber = this.randomIntFromInterval(80, 135);
     gsap.set(element.firstElementChild, { rotation: `random(-${randomNumber}, ${randomNumber})` });
 
@@ -89,7 +105,7 @@ export class PageNotFoundComponent implements OnInit {
       .repeat(-1);
   }
 
-  private randomIntFromInterval(min: number, max: number) {
+  private randomIntFromInterval(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
 

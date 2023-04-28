@@ -36,5 +36,14 @@
         "game-over": "Game Over",
         "close": "Close",
         "link": "Link"
+    },
+    "not-found": {
+        "here": "I don't think you should be here",
+        "lost": "Not all who wander are lost,\nbut you sure are",
+        "rich": "If lost was money,\nyou would be rich",
+        "gps": "So lost even GPS can't help",
+        "places": "It's not lost,\nit's just exploring new places",
+        "not-right": "Something wrong is not right",
+        "never": "Let's pretend you were never here"
     }
 }
