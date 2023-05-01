@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { SkillModel } from 'src/models/skill.model';
 import { SlideInOutAnimation } from 'src/utils/animations/slide-animation';
+import ScrollReveal from 'scrollreveal';
 
 @Component({
   selector: 'skills',
@@ -8,7 +9,7 @@ import { SlideInOutAnimation } from 'src/utils/animations/slide-animation';
   styleUrls: ['./skills.component.scss'],
   animations: [SlideInOutAnimation]
 })
-export class SkillsComponent implements OnInit {
+export class SkillsComponent implements OnInit, AfterViewInit {
   hidden = 'out';
   skills: SkillModel[] = [
     { title: 'CSS', percentage: '20%' },
@@ -23,18 +24,36 @@ export class SkillsComponent implements OnInit {
     { title: 'skills.bad-jokes', percentage: '11%' }
   ];
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.appendCss();
   }
 
-  appendCss() {
+  ngAfterViewInit(): void {
+    this.scrollRevealEffect('#section-skills h1');
+    this.scrollRevealEffect('.skills');
+  }
+
+  hiddenOthersSkills(): void {
+    this.hidden = this.hidden === 'out' ? 'in' : 'out';
+  }
+
+  private scrollRevealEffect(name: string): void {
+    ScrollReveal().reveal(name, {
+      distance: '50px',
+      duration: 2000,
+      origin: 'bottom',
+      reset: false
+    });
+  }
+
+  private appendCss(): void {
     const style = document.createElement('style');
 
     this.addKeyFrameSkill(style, this.skills);
     this.addKeyFrameSkill(style, this.othersSkills);
   }
 
-  addKeyFrameSkill(style: HTMLStyleElement, skills: SkillModel[]) {
+  private addKeyFrameSkill(style: HTMLStyleElement, skills: SkillModel[]): void {
     skills.forEach(skill => {
       style.innerHTML += `@keyframes ${skill.title} {
         0% {
@@ -48,9 +67,5 @@ export class SkillsComponent implements OnInit {
 
       document.head.appendChild(style);
     });
-  }
-
-  hiddenOthersSkills() {
-    this.hidden = this.hidden === 'out' ? 'in' : 'out';
   }
 }
