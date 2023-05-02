@@ -48,7 +48,7 @@ export class HeaderComponent implements OnInit {
   }
 
   @HostListener('window:resize', ['$event'])
-  onResize() {
+  onResize(): void {
     if (this.CHECKBOX!.checked && window.innerWidth >= 700) {
       this.CHECKBOX!.checked = false;
     }

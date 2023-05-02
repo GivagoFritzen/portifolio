@@ -3,6 +3,7 @@ import { NguCarouselConfig } from '@ngu/carousel';
 import { slides } from './games';
 import { slider } from '../../../utils/animations/slide-animation';
 import { GameModel } from 'src/models/game.model';
+import ScrollReveal from 'scrollreveal';
 
 @Component({
   selector: 'games',
@@ -14,6 +15,7 @@ import { GameModel } from 'src/models/game.model';
 export class GamesComponent {
   slides: GameModel[] = slides;
 
+  showQuantitySlide: number = 0;
   showGame: boolean = false;
   currentGame: GameModel = new GameModel();
 
@@ -36,15 +38,24 @@ export class GamesComponent {
 
   constructor() {
     const mediaSlide = 480;
-    this.carouselBanner.grid.lg = Math.floor(window.innerWidth / mediaSlide);
+    this.showQuantitySlide = Math.floor(window.innerWidth / mediaSlide);
+    this.carouselBanner.grid.lg = this.showQuantitySlide;
+  }
+
+  ngAfterViewInit(): void {
+    this.scrollRevealEffect('#games h1');
+
+    for (let index = 0; index < this.showQuantitySlide; index++) {
+      this.scrollRevealEffect('.game-' + index);
+    }
   }
 
   /* It will be triggered on every slide*/
-  onmoveFn(data: any) {
+  onmoveFn(data: any): void {
 
   }
 
-  trackCarousel(_: any, item: any) {
+  trackCarousel(_: any, item: any): void {
     return item;
   }
 
@@ -55,5 +66,14 @@ export class GamesComponent {
 
   closeModal = (): void => {
     this.showGame = false;
+  }
+
+  private scrollRevealEffect(name: string): void {
+    ScrollReveal().reveal(name, {
+      distance: '50px',
+      duration: 2000,
+      origin: 'bottom',
+      reset: false
+    });
   }
 }

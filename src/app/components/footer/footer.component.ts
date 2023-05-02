@@ -18,7 +18,7 @@ export class FooterComponent {
 
   constructor(private router: Router) { }
 
-  joystickClick(button: Joystick) {
+  joystickClick(button: Joystick): void {
     this.code.push(button);
 
     if (this.code.length > 11) {

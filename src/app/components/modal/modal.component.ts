@@ -20,7 +20,7 @@ export class ModalComponent {
   @Input()
   public functionToCloseModal: Function = () => { };
 
-  @HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent) {
+  @HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent): void {
     if (this.hidden != false && event.key === 'Escape')
       this.closeModal()
   }

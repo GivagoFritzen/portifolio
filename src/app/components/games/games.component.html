@@ -6,7 +6,7 @@
         <button NguCarouselPrev class="arrow left"></button>
 
         <ngu-item *nguCarouselDef="let item; index as i; let ani = animate" [@slider]="ani">
-            <div class="game">
+            <div class="game" [ngClass]="'game-' + i">
                 <button (click)="seeMore(slides[i])">
                     <h2>{{ slides[i].title }}</h2>
                     <img src='{{ "../../../assets/games/" + slides[i].imageSrc + ".jpg" }}' />

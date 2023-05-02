@@ -37,11 +37,59 @@ export class SpaceGameComponent implements AfterViewInit {
     this.startGameLoop();
   }
 
-  @HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent) {
+  @HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent): void {
     this.movePlayer(event, 'keydown');
   }
 
-  startGameLoop() {
+  moveLeft(): void {
+    if (player.x === 0 || player.x < 0) {
+      player.x = 0;
+    } else {
+      player.x -= player.speed;
+    }
+  }
+
+  moveRight(): void {
+    if (player.x + player.width === map.width ||
+      player.x + player.width > map.width) {
+      player.x = map.width - player.width;
+    } else {
+      player.x += player.speed;
+    }
+  }
+
+  moveUp(): void {
+    if (player.y === 0 + this.headerSize || player.y < this.headerSize) {
+      player.y = this.headerSize;
+    } else {
+      player.y -= player.speed;
+    }
+  }
+
+  moveDown(): void {
+    if (player.y + player.height === map.height ||
+      player.y + player.height > map.height) {
+      player.y = map.height - player.height;
+    } else {
+      player.y += player.speed;
+    }
+  }
+
+  resetGame = (): void => {
+    player.x = window.innerWidth / 2;
+    player.y = window.innerHeight / 2;
+    this.obstacles = [];
+    clearInterval(this.gameLoop);
+    this.cleanGround();
+    this.gameOver = false;
+    this.startGameLoop();
+  }
+
+  goHome = (): void => {
+    this.router.navigateByUrl('');
+  }
+
+  private startGameLoop(): void {
     this.gameLoop = setInterval(() => {
       if (this.gameOver)
         return;
@@ -54,12 +102,12 @@ export class SpaceGameComponent implements AfterViewInit {
     }, 10);
   }
 
-  loadAssets(): void {
+  private loadAssets(): void {
     this.playerImg.src = player.imgSrc;
     this.obstacleImg.src = '../../../../assets/game/star.svg';
   }
 
-  drawPlayer() {
+  private drawPlayer(): void {
     this.ctx.drawImage(
       this.playerImg,
       player.x, player.y,
@@ -67,7 +115,7 @@ export class SpaceGameComponent implements AfterViewInit {
     );
   }
 
-  movePlayer(event: KeyboardEvent, type: string): void {
+  private movePlayer(event: KeyboardEvent, type: string): void {
     if (type === 'keydown') {
       if (event.key === 'ArrowLeft' || event.key === 'A' || event.key === 'a')
         this.moveLeft();
@@ -80,45 +128,11 @@ export class SpaceGameComponent implements AfterViewInit {
     }
   }
 
-  moveLeft(): void {
-    if (player.x === 0 || player.x < 0) {
-      player.x = 0;
-    } else {
-      player.x -= player.speed;
-    }
-  }
-
-  moveRight() {
-    if (player.x + player.width === map.width ||
-      player.x + player.width > map.width) {
-      player.x = map.width - player.width;
-    } else {
-      player.x += player.speed;
-    }
-  }
-
-  moveUp() {
-    if (player.y === 0 + this.headerSize || player.y < this.headerSize) {
-      player.y = this.headerSize;
-    } else {
-      player.y -= player.speed;
-    }
-  }
-
-  moveDown() {
-    if (player.y + player.height === map.height ||
-      player.y + player.height > map.height) {
-      player.y = map.height - player.height;
-    } else {
-      player.y += player.speed;
-    }
-  }
-
-  everyInterval(frame: number) {
+  private everyInterval(frame: number): boolean {
     return (this.frameNumber / frame) % 1 == 0
   }
 
-  createObstacles(): void {
+  private createObstacles(): void {
     if (this.frameNumber === 1 || this.everyInterval(45)) {
       const direction = Math.random() < 0.5;
 
@@ -140,7 +154,7 @@ export class SpaceGameComponent implements AfterViewInit {
     }
   }
 
-  moveObstacles(): void {
+  private moveObstacles(): void {
     this.obstacles.forEach((element: ObstacleModel, index: number) => {
       if (element.fallAxisY)
         element.y += element.speed;
@@ -163,7 +177,7 @@ export class SpaceGameComponent implements AfterViewInit {
     });
   }
 
-  detectCrash(obstacle: ObstacleModel): boolean {
+  private detectCrash(obstacle: ObstacleModel): boolean {
     if ((player.y + player.height < obstacle.y) ||
       (player.y > obstacle.y + obstacle.height) ||
       (player.x + player.width < obstacle.x) ||
@@ -174,21 +188,7 @@ export class SpaceGameComponent implements AfterViewInit {
     return true;
   }
 
-  resetGame = (): void => {
-    player.x = window.innerWidth / 2;
-    player.y = window.innerHeight / 2;
-    this.obstacles = [];
-    clearInterval(this.gameLoop);
-    this.cleanGround();
-    this.gameOver = false;
-    this.startGameLoop();
-  }
-
-  goHome = (): void => {
-    this.router.navigateByUrl('');
-  }
-
-  cleanGround(): void {
+  private cleanGround(): void {
     this.ctx.clearRect(0, 0, map.width, map.height);
   }
 }

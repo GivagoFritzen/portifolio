@@ -32,7 +32,7 @@ export class WhoComponent implements OnInit {
     this.INTERVAL_VAL = setInterval(() => this.EffectType(), 100);
   }
 
-  EffectType(): void {
+  private EffectType(): void {
     const text = this.translateService.instant(this.SENTENCES[this.PART]).substring(0, this.PART_INDEX + 1);
     this.ELEMENT!.innerHTML = text;
     this.PART_INDEX++;
@@ -48,7 +48,7 @@ export class WhoComponent implements OnInit {
     }
   }
 
-  EffectDelete(): void {
+  private EffectDelete(): void {
     const text = this.translateService.instant(this.SENTENCES[this.PART]).substring(0, this.PART_INDEX - 1);
     this.ELEMENT!.innerHTML = text;
     this.PART_INDEX--;

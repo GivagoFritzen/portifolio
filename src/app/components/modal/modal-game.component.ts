@@ -17,8 +17,4 @@ export class ModalGameComponent extends ModalComponent implements OnChanges {
             this.text = "games." + this.game!.text;
         }
     }
-
-    link() {
-
-    }
 }

@@ -50,7 +50,7 @@ export class PageNotFoundComponent implements OnInit {
     this.setSpaceTextByLanguage();
   }
 
-  randomAnimate(element: HTMLElement): void {
+  private randomAnimate(element: HTMLElement): void {
     this.randomRotation(element);
 
     gsap.to(element, {
@@ -69,7 +69,7 @@ export class PageNotFoundComponent implements OnInit {
     }).progress(0.25);
   }
 
-  randomAnimateSpaceText(element: HTMLElement, duration: number = this.DURATION): void {
+  private randomAnimateSpaceText(element: HTMLElement, duration: number = this.DURATION): void {
     this.randomRotation(element);
 
     gsap.to(element, {
