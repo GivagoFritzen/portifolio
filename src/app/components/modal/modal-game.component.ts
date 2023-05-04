@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { ModalComponent } from './modal.component';
 import { GameModel } from 'src/models/game.model';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
     selector: 'modal-game',
@@ -15,6 +16,12 @@ export class ModalGameComponent extends ModalComponent implements OnChanges {
         if (this.show) {
             this.title = this.game!.title;
             this.text = "games." + this.game!.text;
+            document.body.classList.add('no-scroll');
         }
+    }
+
+    override closeModal(): void {
+        super.closeModal();
+        document.body.classList.remove('no-scroll');
     }
 }
