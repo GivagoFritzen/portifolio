@@ -12,7 +12,7 @@ export class ModalGameComponent extends ModalComponent implements OnChanges {
     public game: GameModel | undefined;
 
     ngOnChanges() {
-        if (this.hidden) {
+        if (this.show) {
             this.title = this.game!.title;
             this.text = "games." + this.game!.text;
         }

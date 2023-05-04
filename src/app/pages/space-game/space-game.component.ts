@@ -16,7 +16,7 @@ export class SpaceGameComponent implements AfterViewInit {
   headerSize: number = 65;
   frameNumber: number = 0;
 
-  gameOver: boolean = false;
+  showGameOver: boolean = false;
   gameLoop?: NodeJS.Timer;
   playerImg: any = new Image();
 
@@ -81,7 +81,7 @@ export class SpaceGameComponent implements AfterViewInit {
     this.obstacles = [];
     clearInterval(this.gameLoop);
     this.cleanGround();
-    this.gameOver = false;
+    this.showGameOver = false;
     this.startGameLoop();
   }
 
@@ -91,7 +91,7 @@ export class SpaceGameComponent implements AfterViewInit {
 
   private startGameLoop(): void {
     this.gameLoop = setInterval(() => {
-      if (this.gameOver)
+      if (this.showGameOver)
         return;
 
       this.frameNumber += 1;
@@ -168,7 +168,7 @@ export class SpaceGameComponent implements AfterViewInit {
       );
 
       if (this.detectCrash(element)) {
-        this.gameOver = true;
+        this.showGameOver = true;
       }
 
       if (element.y > map.height) {

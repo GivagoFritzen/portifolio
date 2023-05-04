@@ -14,26 +14,26 @@ export class ModalComponent {
   public buttonText: string = "";
 
   @Input()
-  public hidden: boolean = true;
+  public show: boolean = false;
   @Input()
   public functionToOkButtonModal: Function | undefined;
   @Input()
   public functionToCloseModal: Function = () => { };
 
   @HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent): void {
-    if (this.hidden != false && event.key === 'Escape')
+    if (this.show != true && event.key === 'Escape')
       this.closeModal()
   }
 
   okButton(): void {
-    this.hidden = true;
+    this.show = false;
 
     if (this.functionToOkButtonModal !== undefined)
       this.functionToOkButtonModal();
   }
 
   closeModal(): void {
-    this.hidden = true;
+    this.show = false;
     this.functionToCloseModal();
   }
 }
