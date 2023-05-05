@@ -8,7 +8,7 @@
         <ngu-item *nguCarouselDef="let item; index as i; let ani = animate" [@slider]="ani">
             <div class="game" [ngClass]="'game-' + i">
                 <button (click)="seeMore(slides[i])">
-                    <h2>{{ slides[i].title }}</h2>
+                    <h2 *ngIf="slides[i].showTitleInTheSlideSelection">{{ slides[i].title }}</h2>
                     <img src='{{ "../../../assets/games/" + slides[i].imageSrc + ".jpg" }}' />
                     <button class="see-more">
                         <span>ver mais...</span>
