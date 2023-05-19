@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { WhoComponent } from './who.component';
+import { TranslateLoader, TranslateModule, TranslateStore } from '@ngx-translate/core';
+import { createTranslateLoader } from 'src/utils/test/translate-loader-test';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
 describe('WhoComponent', () => {
   let component: WhoComponent;
@@ -8,9 +11,24 @@ describe('WhoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WhoComponent ]
+      declarations: [WhoComponent],
+      imports: [
+        TranslateModule.forChild(
+          {
+            loader: {
+              provide: TranslateLoader,
+              useFactory: (createTranslateLoader),
+              deps: [HttpClient]
+            }
+          },
+        )],
+      providers: [
+        HttpHandler,
+        HttpClient,
+        TranslateStore,
+      ]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(WhoComponent);
     component = fixture.componentInstance;
