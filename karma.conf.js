@@ -11,30 +11,31 @@ module.exports = function (config) {
             require('karma-jasmine-html-reporter'),
             require('karma-coverage'),
             require('@angular-devkit/build-angular/plugins/karma'),
+            require('karma-coverage-istanbul-reporter')
         ],
         client: {
-            clearContext: false //  leave Jasmine Spec Runner output visible in browser
+            clearContext: false, //  leave Jasmine Spec Runner output visible in browser
+            jasmine: {
+                random: false // Run tests at random
+            }
+        },
+        coverageIstanbulReporter: {
+            dir: require('path').join(__dirname, './coverage'),
+            reports: ['html', 'lcovonly', 'json', 'text-summary'],
+            fixWebpackSourcePaths: true,
         },
         jasmineHtmlReporter: {
             suppressAll: true, // removes the duplicated traces
         },
-        coverageReporter: {
-            dir: require('path').join(__dirname, './coverage/AngularUnitTesting'),
-            subdir: '.',
-            reporters: [
-                { type: 'html' },
-                { type: 'text-summary' }
-            ]
-        },
         files: [
             'node_modules/zone.js/dist/zone.js',
         ],
-        reporters: ['progress', 'kjhtml'],
+        reporters: ['progress', 'kjhtml', 'coverage-istanbul'],
         port: 9876,
         colors: true,
         logLevel: config.LOG_INFO,
         autoWatch: true,
-        browsers: ['Chrome'],
+        browsers: ['ChromeHeadless'],
         singleRun: false,
         restartOnFileChange: true
     });
