@@ -40,4 +40,15 @@ describe('SkillsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should call hiddenOthersSkills with hidden equal out and set to in', () => {
+    component.hiddenOthersSkills();
+    expect(component.hidden).toBe("in");
+  });
+
+  it('should call hiddenOthersSkills with hidden equal out and set to in', () => {
+    component.hidden = "in";
+    component.hiddenOthersSkills();
+    expect(component.hidden).toBe("out");
+  });
 });

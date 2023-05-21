@@ -15,9 +15,7 @@ export class WhoComponent implements OnInit {
   PART = 0;
   PART_INDEX = 0;
 
-  INTERVAL_VAL: NodeJS.Timer = setInterval(() => {
-    clearInterval(this.INTERVAL_VAL);
-  }, 50);
+  INTERVAL_VAL?: NodeJS.Timer;
   ELEMENT?: Element | null;
   CURSOR?: HTMLElement | null;
 
@@ -33,6 +31,7 @@ export class WhoComponent implements OnInit {
   }
 
   private EffectType(): void {
+    console.log('EffectType')
     const text = this.translateService.instant(this.SENTENCES[this.PART]).substring(0, this.PART_INDEX + 1);
     this.ELEMENT!.innerHTML = text;
     this.PART_INDEX++;

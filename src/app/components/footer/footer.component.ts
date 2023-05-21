@@ -10,8 +10,8 @@ import { Joystick } from '../../../enum/joystick.enum';
 export class FooterComponent {
   currentButton = Joystick;
 
-  code: Joystick[] = [];
-  konamiCode: Joystick[] = [
+  private code: Joystick[] = [];
+  private konamiCode: Joystick[] = [
     Joystick.Up, Joystick.Up, Joystick.Down, Joystick.Down, Joystick.Left,
     Joystick.Right, Joystick.Left, Joystick.Right, Joystick.B, Joystick.A, Joystick.Start
   ];

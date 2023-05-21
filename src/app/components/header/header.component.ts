@@ -14,9 +14,8 @@ export class HeaderComponent implements OnInit {
   show: boolean = true;
   isHome: boolean = false;
 
-  currentPosition: number = 0;
-
-  CHECKBOX?: HTMLInputElement | null;
+  private currentPosition: number = 0;
+  private CHECKBOX?: HTMLInputElement | null;
 
   constructor(private scroller: ViewportScroller, private translateService: TranslateService, private router: Router) {
     this.isHome = window.location.pathname === '/';
