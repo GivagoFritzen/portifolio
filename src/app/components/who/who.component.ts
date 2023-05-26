@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { Subscription, interval, take } from 'rxjs';
 
 @Component({
   selector: 'who',
@@ -7,17 +8,17 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./who.component.scss']
 })
 export class WhoComponent implements OnInit {
-  SENTENCES: string[] = [
+  private SENTENCES: string[] = [
     "who.fraseA",
     "who.fraseB"
   ];
 
-  PART = 0;
-  PART_INDEX = 0;
+  private PART = 0;
+  private PART_INDEX = 0;
 
-  INTERVAL_VAL?: NodeJS.Timer;
-  ELEMENT?: Element | null;
-  CURSOR?: HTMLElement | null;
+  private INTERVAL_VAL?: Subscription;
+  private ELEMENT?: Element | null;
+  private CURSOR?: HTMLElement | null;
 
   constructor(private translateService: TranslateService) {
   }
@@ -26,8 +27,14 @@ export class WhoComponent implements OnInit {
     this.ELEMENT = document.querySelector("#text");
     this.CURSOR = document.querySelector("#cursor");
 
-    clearInterval(this.INTERVAL_VAL);
-    this.INTERVAL_VAL = setInterval(() => this.EffectType(), 100);
+
+    if (this.INTERVAL_VAL) {
+      this.INTERVAL_VAL.unsubscribe();
+    }
+
+    this.INTERVAL_VAL = interval(100).subscribe(() => {
+      this.EffectType();
+    });
   }
 
   private EffectType(): void {
@@ -39,10 +46,10 @@ export class WhoComponent implements OnInit {
     if (text === this.translateService.instant(this.SENTENCES[this.PART])) {
       this.CURSOR!.style.display = 'none';
 
-      clearInterval(this.INTERVAL_VAL);
+      this.INTERVAL_VAL!.unsubscribe();
 
       setTimeout(() => {
-        this.INTERVAL_VAL = setInterval(() => this.EffectDelete(), 50);
+        this.INTERVAL_VAL = interval(50).pipe(take(Infinity)).subscribe(() => this.EffectDelete());
       }, 1000);
     }
   }
@@ -53,7 +60,7 @@ export class WhoComponent implements OnInit {
     this.PART_INDEX--;
 
     if (text === '') {
-      clearInterval(this.INTERVAL_VAL);
+      this.INTERVAL_VAL!.unsubscribe();
 
       if (this.PART == (this.SENTENCES.length - 1))
         this.PART = 0;
@@ -64,7 +71,7 @@ export class WhoComponent implements OnInit {
 
       setTimeout(() => {
         this.CURSOR!.style.display = 'inline-block';
-        this.INTERVAL_VAL = setInterval(() => this.EffectType(), 100);
+        this.INTERVAL_VAL = interval(100).pipe(take(Infinity)).subscribe(() => this.EffectType());
       }, 200);
     }
   }
