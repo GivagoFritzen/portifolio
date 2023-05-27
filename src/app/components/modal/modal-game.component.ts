@@ -1,7 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { ModalComponent } from './modal.component';
 import { GameModel } from 'src/models/game.model';
-import { AppComponent } from 'src/app/app.component';
 
 @Component({
     selector: 'modal-game',

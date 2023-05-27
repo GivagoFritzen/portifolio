@@ -11,17 +11,17 @@ import { ObstacleModel } from './model/obstacle.model';
 export class SpaceGameComponent implements AfterViewInit {
   @ViewChild('canvas', { static: true })
   canvas!: ElementRef<HTMLCanvasElement>;
-  ctx!: CanvasRenderingContext2D;
+  private ctx!: CanvasRenderingContext2D;
 
-  headerSize: number = 65;
-  frameNumber: number = 0;
+  private headerSize: number = 65;
+  private frameNumber: number = 0;
 
   showGameOver: boolean = false;
-  gameLoop?: NodeJS.Timer;
-  playerImg: any = new Image();
+  private gameLoop?: NodeJS.Timer;
+  private playerImg: any = new Image();
 
-  obstacleImg: any = new Image();
-  obstacles: Array<ObstacleModel> = [];
+  private obstacleImg: any = new Image();
+  private obstacles: Array<ObstacleModel> = [];
 
   constructor(private router: Router) {
     if (localStorage.getItem("Secret") == null)

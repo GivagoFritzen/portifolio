@@ -28,7 +28,7 @@ export class PageNotFoundComponent implements OnInit {
   ];
 
   constructor(private translateService: TranslateService) {
-    translateService.onLangChange.subscribe(lang => {
+    translateService.onLangChange.subscribe(() => {
       this.setSpaceTextByLanguage();
     })
   }
