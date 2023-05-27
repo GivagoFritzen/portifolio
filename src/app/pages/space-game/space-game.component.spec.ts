@@ -4,7 +4,7 @@ import { SpaceGameComponent } from './space-game.component';
 import { ModalComponent } from 'src/app/components/modal/modal.component';
 import { map, player } from './configs';
 
-fdescribe('SpaceGameComponent', () => {
+describe('SpaceGameComponent', () => {
   let component: SpaceGameComponent;
   let fixture: ComponentFixture<SpaceGameComponent>;
 
@@ -78,5 +78,81 @@ fdescribe('SpaceGameComponent', () => {
     const lastPosition = player.y;
     component.moveDown();
     expect(player.y).toBe(lastPosition + player.speed);
+  });
+
+  it('should reset game', () => {
+    player.x = 10;
+    player.y = 10;
+
+    component.resetGame();
+
+    expect(component["obstacles"]).toEqual([]);
+    expect(player.x).toBe(window.innerWidth / 2);
+    expect(player.y).toBe(window.innerHeight / 2);
+    expect(component.showGameOver).toBeFalse();
+  });
+
+  const keydownMovePlayerLeft: { key: string }[] = [
+    { key: 'ArrowLeft' },
+    { key: 'A' },
+    { key: 'a' }
+  ];
+  keydownMovePlayerLeft.forEach((keydownEventCase) => {
+    it(`should handle keydown event for key '${keydownEventCase.key}' and move left`, () => {
+      player.x = window.innerWidth / 2;
+      const lastPosition = player.x;
+      const keyboardEvent = new KeyboardEvent('keydown', { key: keydownEventCase.key });
+
+      document.dispatchEvent(keyboardEvent);
+      expect(player.x).toBe(lastPosition - player.speed);
+    });
+  });
+
+  const keydownMovePlayerRight: { key: string }[] = [
+    { key: 'ArrowRight' },
+    { key: 'D' },
+    { key: 'd' }
+  ];
+  keydownMovePlayerRight.forEach((keydownEventCase) => {
+    it(`should handle keydown event for key '${keydownEventCase.key}' and move right`, () => {
+      player.x = window.innerWidth / 2;
+      const lastPosition = player.x;
+      const keyboardEvent = new KeyboardEvent('keydown', { key: keydownEventCase.key });
+
+      document.dispatchEvent(keyboardEvent);
+      expect(player.x).toBe(lastPosition + player.speed);
+    });
+  });
+
+  const keydownMovePlayerUp: { key: string }[] = [
+    { key: 'ArrowUp' },
+    { key: 'W' },
+    { key: 'w' }
+  ];
+  keydownMovePlayerUp.forEach((keydownEventCase) => {
+    it(`should handle keydown event for key '${keydownEventCase.key}' and move up`, () => {
+      player.y = window.innerHeight / 2;
+      const lastPosition = player.y;
+      const keyboardEvent = new KeyboardEvent('keydown', { key: keydownEventCase.key });
+
+      document.dispatchEvent(keyboardEvent);
+      expect(player.y).toBe(lastPosition - player.speed);
+    });
+  });
+
+  const keydownMovePlayerDown: { key: string }[] = [
+    { key: 'ArrowDown' },
+    { key: 'S' },
+    { key: 's' }
+  ];
+  keydownMovePlayerDown.forEach((keydownEventCase) => {
+    it(`should handle keydown event for key '${keydownEventCase.key}' and move up`, () => {
+      player.y = window.innerHeight / 2;
+      const lastPosition = player.y;
+      const keyboardEvent = new KeyboardEvent('keydown', { key: keydownEventCase.key });
+
+      document.dispatchEvent(keyboardEvent);
+      expect(player.y).toBe(lastPosition + player.speed);
+    });
   });
 });
