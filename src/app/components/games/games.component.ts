@@ -19,19 +19,14 @@ export class GamesComponent {
   showGame: boolean = false;
   currentGame: GameModel = new GameModel();
 
-  // Width / 480
   carouselBanner: NguCarouselConfig = {
     grid: { xs: 1, sm: 2, md: 2, lg: 3, all: 0 },
     slide: 1,
-    speed: 0,
-    /*
+    speed: 400,
     interval: {
-      timing: 3000,
-      initialDelay: 1000
+      timing: 4000,
+      initialDelay: 0
     },
-    */
-    load: 2,
-    custom: 'banner',
     loop: true,
     touch: true,
   };
@@ -44,10 +39,7 @@ export class GamesComponent {
 
   ngAfterViewInit(): void {
     this.scrollRevealEffect('#games h1');
-
-    for (let index = 0; index < this.showQuantitySlide; index++) {
-      this.scrollRevealEffect('.game-' + index);
-    }
+    this.scrollRevealEffect('.carousel');
   }
 
   /* It will be triggered on every slide*/

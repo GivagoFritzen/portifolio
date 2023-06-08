@@ -38,7 +38,6 @@ export class WhoComponent implements OnInit {
   }
 
   private EffectType(): void {
-    console.log('EffectType')
     const text = this.translateService.instant(this.SENTENCES[this.PART]).substring(0, this.PART_INDEX + 1);
     this.ELEMENT!.innerHTML = text;
     this.PART_INDEX++;

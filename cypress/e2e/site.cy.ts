@@ -76,7 +76,7 @@ describe('Test all site', () => {
   })
   */
 
-  it('Go footer and make konami code', () => {
+  it('Go games and open modal games', () => {
     cy.visit('http://localhost:4200/')
     cy.contains('Games').click();
   })
