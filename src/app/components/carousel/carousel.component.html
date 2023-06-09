@@ -1,0 +1,22 @@
+<modal-game [show]=showGame [functionToCloseModal]="closeModal" [game]=currentGame />
+
+<section id="games">
+    <h1>{{ 'games.made' | translate }}</h1>
+    <div class="carousel">
+        <button class="arrow left" (click)="prevSlide()"></button>
+
+        <div *ngFor="let item of slides; index as i;">
+            <div class="game" [ngClass]="'game-' + i">
+                <button (click)="seeMore(slides[i])">
+                    <h2 *ngIf="slides[i].showTitleInTheSlideSelection">{{ slides[i].title }}</h2>
+                    <img src='{{ "../../../assets/games/" + slides[i].imageSrc + ".jpg" }}' />
+                    <button class="see-more">
+                        <span>ver mais...</span>
+                    </button>
+                </button>
+            </div>
+        </div>
+
+        <button class="arrow right" (click)="nextSlide()"></button>
+    </div>
+</section>

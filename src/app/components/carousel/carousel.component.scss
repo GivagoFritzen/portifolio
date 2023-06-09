@@ -1,4 +1,4 @@
-@import "../../../utils//styles/colors.scss";
+@import "../../../utils/styles/colors.scss";
 
 #games {
     background-color: $sky-blue;
@@ -10,12 +10,12 @@
     .arrow {
         border: 0;
         position: absolute;
-        top: 50%;
         width: 3vmin;
         height: 3vmin;
         background: transparent;
         border-top: 1vmin solid white;
         border-right: 1vmin solid white;
+        top: 50%;
         z-index: 1;
 
         &.right {
@@ -62,12 +62,18 @@
     }
 }
 
+.carousel {
+    display: flex;
+    overflow: hidden;
+}
+
 .game {
     align-items: center;
     display: flex;
     justify-content: center;
     margin: 0 auto;
     min-height: 350px;
+    transition: transform 0.5s ease;
 
     > button {
         background: none;

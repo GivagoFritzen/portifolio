@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, OnDestroy, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { map, player } from './configs';
 import { ObstacleModel } from './model/obstacle.model';
@@ -8,7 +8,7 @@ import { ObstacleModel } from './model/obstacle.model';
   templateUrl: './space-game.component.html',
   styleUrls: ['./space-game.component.scss']
 })
-export class SpaceGameComponent implements AfterViewInit {
+export class SpaceGameComponent implements AfterViewInit, OnDestroy {
   @ViewChild('canvas', { static: true })
   canvas!: ElementRef<HTMLCanvasElement>;
   private ctx!: CanvasRenderingContext2D;
@@ -35,6 +35,10 @@ export class SpaceGameComponent implements AfterViewInit {
 
     this.loadAssets();
     this.startGameLoop();
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.gameLoop);
   }
 
   @HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent): void {
