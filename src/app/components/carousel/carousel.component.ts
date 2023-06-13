@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, HostListener, ElementRef } from '@angular/core';
+import { Component, OnDestroy, HostListener, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { GameModel } from 'src/models/game.model';
 import { slides } from './games';
 import Hammer from 'hammerjs';
@@ -8,12 +8,12 @@ import Hammer from 'hammerjs';
     templateUrl: './carousel.component.html',
     styleUrls: ['./carousel.component.scss']
 })
-export class CarouselComponent implements OnInit, OnDestroy {
+export class CarouselComponent implements OnDestroy {
     slides: GameModel[] = slides;
 
     showGame: boolean = false;
 
-    private currentIndex: number = 0;
+    currentIndex: number = 0;
     currentGame: GameModel = new GameModel();
 
     private readonly interval = 2000;
@@ -23,11 +23,7 @@ export class CarouselComponent implements OnInit, OnDestroy {
     private touchEndX: number = 0;
     private swipeThreshold: number = 50;
 
-    constructor(private elementRef: ElementRef) {
-    }
-
-    ngOnInit() {
-        this.startTimer();
+    constructor(private elementRef: ElementRef, private cdref: ChangeDetectorRef) {
     }
 
     ngOnDestroy() {
@@ -39,6 +35,7 @@ export class CarouselComponent implements OnInit, OnDestroy {
         this.scrollRevealEffect('#games h1');
         this.scrollRevealEffect('.carousel');
         this.configTouch();
+        this.cdref.detectChanges();
     }
 
     @HostListener('touchstart', ['$event'])
@@ -71,6 +68,12 @@ export class CarouselComponent implements OnInit, OnDestroy {
 
     closeModal = (): void => {
         this.showGame = false;
+    }
+
+    goToSlide(index: number): void {
+        this.currentIndex = index;
+        this.adjustSlidePosition();
+        this.restartTimer();
     }
 
     private configTouch(): void {

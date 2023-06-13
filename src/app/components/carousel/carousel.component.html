@@ -19,4 +19,8 @@
 
         <button class="arrow right" (click)="nextSlide()"></button>
     </div>
+    <div class="carousel-dots">
+        <span *ngFor="let slide of slides; let i = index" (click)="goToSlide(i)"
+            [ngClass]="{ 'active': i === currentIndex }"></span>
+    </div>
 </section>

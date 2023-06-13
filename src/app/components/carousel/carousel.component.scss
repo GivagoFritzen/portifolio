@@ -141,3 +141,22 @@
         }
     }
 }
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+
+    span {
+        cursor: pointer;
+        background-color: white;
+        border-radius: 50%;
+        height: 10px;
+        margin: 0 5px;
+        width: 10px;
+
+        &.active {
+            background-color: grey;
+        }
+    }
+}
