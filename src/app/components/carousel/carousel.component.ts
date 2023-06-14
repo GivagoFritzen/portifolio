@@ -12,6 +12,7 @@ export class CarouselComponent implements OnDestroy {
     slides: GameModel[] = slides;
 
     showGame: boolean = false;
+    stopCarousel: boolean = false;
 
     currentIndex: number = 0;
     currentGame: GameModel = new GameModel();
@@ -64,10 +65,12 @@ export class CarouselComponent implements OnDestroy {
     seeMore(game: GameModel): void {
         this.currentGame = game;
         this.showGame = true;
+        this.stopCarousel = true;
     }
 
     closeModal = (): void => {
         this.showGame = false;
+        this.stopCarousel = false;
     }
 
     goToSlide(index: number): void {
@@ -85,7 +88,8 @@ export class CarouselComponent implements OnDestroy {
 
     private startTimer(): void {
         this.timer = setInterval(() => {
-            this.nextSlide();
+            if (!this.stopCarousel)
+                this.nextSlide();
         }, this.interval);
     }
 
@@ -106,8 +110,11 @@ export class CarouselComponent implements OnDestroy {
     private adjustSlidePosition(): void {
         const games = document.getElementsByClassName('game') as HTMLCollectionOf<HTMLElement>;
 
+        if (this.stopCarousel)
+            return;
+
         for (var i = 0; i < games.length; i++) {
-            games[i].style.transform = `translateX(${(i - this.currentIndex) * 50}%)`;
+            games[i].style.transform = `translateX(-${(this.currentIndex) * 100}%)`;
         }
     }
 

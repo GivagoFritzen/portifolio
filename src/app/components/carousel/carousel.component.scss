@@ -63,8 +63,27 @@
 }
 
 .carousel {
-    display: flex;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% / 5) - 12px);
     overflow: hidden;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    border-radius: 8px;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+
+    @media screen and (max-width: 1500px) {
+        grid-auto-columns: calc(100% / 3);
+    }
+
+    @media screen and (max-width: 900px) {
+        grid-auto-columns: calc(100% / 2);
+    }
+
+    @media screen and (max-width: 600px) {
+        grid-auto-columns: 100%;
+    }
 }
 
 .game {
