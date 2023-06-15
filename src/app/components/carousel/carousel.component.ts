@@ -53,8 +53,14 @@ export class CarouselComponent implements OnDestroy {
 
     prevSlide() {
         this.currentIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
-        this.adjustSlidePosition();
-        this.restartTimer();
+
+        if (this.currentIndex < this.slides.length - this.getCurrentAutoColumns() + 1) {
+            this.adjustSlidePosition();
+            this.restartTimer();
+        }
+        else{
+            this.goToSlide(this.currentIndex);
+        }        
     }
 
     nextSlide() {
@@ -79,7 +85,11 @@ export class CarouselComponent implements OnDestroy {
 
     goToSlide(index: number): void {
         this.currentIndex = index;
+        if (index >= this.slides.length - this.getCurrentAutoColumns() + 1)
+            this.currentIndex = this.slides.length - this.getCurrentAutoColumns();
+
         this.adjustSlidePosition();
+        this.currentIndex = index;
         this.restartTimer();
     }
 
