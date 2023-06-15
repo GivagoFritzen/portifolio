@@ -9,11 +9,9 @@ import Hammer from 'hammerjs';
     styleUrls: ['./carousel.component.scss']
 })
 export class CarouselComponent implements OnDestroy {
-    slides: GameModel[] = slides;
-
     showGame: boolean = false;
     stopCarousel: boolean = false;
-
+    slides: GameModel[] = slides;
     currentIndex: number = 0;
     currentGame: GameModel = new GameModel();
 
@@ -23,6 +21,9 @@ export class CarouselComponent implements OnDestroy {
     private touchStartX: number = 0;
     private touchEndX: number = 0;
     private swipeThreshold: number = 50;
+
+    private games: HTMLCollectionOf<HTMLElement> = document.getElementsByClassName('game') as HTMLCollectionOf<HTMLElement>;
+    private carousel: HTMLCollectionOf<Element> = document.getElementsByClassName('carousel');
 
     constructor(private elementRef: ElementRef, private cdref: ChangeDetectorRef) {
     }
@@ -57,9 +58,12 @@ export class CarouselComponent implements OnDestroy {
     }
 
     nextSlide() {
-        this.currentIndex = (this.currentIndex + 1) % this.slides.length;
-        this.adjustSlidePosition();
-        this.restartTimer();
+        this.currentIndex = ((this.currentIndex + 1) % this.slides.length);
+
+        if (this.currentIndex < this.slides.length - this.getCurrentAutoColumns() + 1) {
+            this.adjustSlidePosition();
+            this.restartTimer();
+        }
     }
 
     seeMore(game: GameModel): void {
@@ -108,14 +112,17 @@ export class CarouselComponent implements OnDestroy {
     }
 
     private adjustSlidePosition(): void {
-        const games = document.getElementsByClassName('game') as HTMLCollectionOf<HTMLElement>;
-
         if (this.stopCarousel)
             return;
 
-        for (var i = 0; i < games.length; i++) {
-            games[i].style.transform = `translateX(-${(this.currentIndex) * 100}%)`;
+        for (var i = 0; i < this.games.length; i++) {
+            this.games[i].style.transform = `translateX(-${(this.currentIndex) * 100}%)`;
         }
+    }
+
+    private getCurrentAutoColumns(): number {
+        const gridAutoColumns = window.getComputedStyle(this.carousel[0]).getPropertyValue("grid-auto-columns");
+        return Math.round(100 / parseFloat(gridAutoColumns));
     }
 
     private handleSwipe(): void {
