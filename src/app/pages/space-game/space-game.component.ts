@@ -10,6 +10,7 @@ import { ObstacleModel } from './model/obstacle.model';
 })
 export class SpaceGameComponent implements AfterViewInit, OnDestroy {
   private ctx!: CanvasRenderingContext2D;
+  private canvasName = 'canvasSpaceGame';
 
   private headerSize = 65;
   private frameNumber = 0;
@@ -28,7 +29,7 @@ export class SpaceGameComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     const canvas = this.renderer.createElement('canvas');
-    canvas.setAttribute('id', 'canvas');
+    canvas.setAttribute('id', this.canvasName);
     document.body.appendChild(canvas);
 
     this.ctx = canvas.getContext('2d');
@@ -41,6 +42,10 @@ export class SpaceGameComponent implements AfterViewInit, OnDestroy {
 
   ngOnDestroy() {
     clearInterval(this.gameLoop);
+
+    var canvas = document.getElementById(this.canvasName);
+    if (canvas)
+      canvas.remove();
   }
 
   @HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent): void {
