@@ -1,4 +1,4 @@
 export class SkillModel {
-    title: any = '';
+    title = '';
     percentage = '0%';
 }

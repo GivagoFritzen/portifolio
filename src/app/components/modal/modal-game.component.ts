@@ -12,9 +12,9 @@ export class ModalGameComponent extends ModalComponent implements OnChanges {
     public game: GameModel | undefined;
 
     ngOnChanges() {
-        if (this.show) {
-            this.title = this.game!.title;
-            this.text = "games." + this.game!.text;
+        if (this.show && this.game !== undefined) {
+            this.title = this.game.title;
+            this.text = "games." + this.game.text;
             document.body.classList.add('no-scroll');
         }
     }

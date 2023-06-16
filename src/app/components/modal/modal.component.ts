@@ -7,18 +7,18 @@ import { Component, HostListener, Input } from '@angular/core';
 })
 export class ModalComponent {
   @Input()
-  public title: string = "";
+  public title = "";
   @Input()
-  public text: string = "";
+  public text = "";
   @Input()
-  public buttonText: string = "";
+  public buttonText = "";
 
   @Input()
-  public show: boolean = false;
+  public show = false;
   @Input()
   public functionToOkButtonModal: Function | undefined;
   @Input()
-  public functionToCloseModal: Function = () => { };
+  public functionToCloseModal: Function | undefined;
 
   @HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent): void {
     if (this.show != true && event.key === 'Escape')
@@ -34,6 +34,8 @@ export class ModalComponent {
 
   closeModal(): void {
     this.show = false;
-    this.functionToCloseModal();
+
+    if (this.functionToCloseModal !== undefined)
+      this.functionToCloseModal();
   }
 }

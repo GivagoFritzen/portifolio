@@ -1,4 +1,4 @@
-import { Component, OnDestroy, HostListener, ElementRef, ChangeDetectorRef } from '@angular/core';
+import { Component, OnDestroy, HostListener, ElementRef, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { GameModel } from 'src/models/game.model';
 import { slides } from './games';
 import Hammer from 'hammerjs';
@@ -8,19 +8,19 @@ import Hammer from 'hammerjs';
     templateUrl: './carousel.component.html',
     styleUrls: ['./carousel.component.scss']
 })
-export class CarouselComponent implements OnDestroy {
-    showGame: boolean = false;
-    stopCarousel: boolean = false;
+export class CarouselComponent implements OnDestroy, AfterViewInit {
+    showGame = false;
+    stopCarousel = false;
     slides: GameModel[] = slides;
-    currentIndex: number = 0;
+    currentIndex = 0;
     currentGame: GameModel = new GameModel();
 
     private readonly interval = 2000;
-    private timer: any;
+    private timer!: NodeJS.Timeout;
 
-    private touchStartX: number = 0;
-    private touchEndX: number = 0;
-    private swipeThreshold: number = 50;
+    private touchStartX = 0;
+    private touchEndX = 0;
+    private swipeThreshold = 50;
 
     private games: HTMLCollectionOf<HTMLElement> = document.getElementsByClassName('game') as HTMLCollectionOf<HTMLElement>;
     private carousel: HTMLCollectionOf<Element> = document.getElementsByClassName('carousel');
@@ -58,13 +58,13 @@ export class CarouselComponent implements OnDestroy {
             this.adjustSlidePosition();
             this.restartTimer();
         }
-        else{
+        else {
             this.goToSlide(this.currentIndex);
-        }        
+        }
     }
 
     nextSlide() {
-        this.currentIndex = ((this.currentIndex + 1) % this.slides.length);
+        this.currentIndex = (this.currentIndex + 1) % this.slides.length;
 
         if (this.currentIndex < this.slides.length - this.getCurrentAutoColumns() + 1) {
             this.adjustSlidePosition();
@@ -125,7 +125,7 @@ export class CarouselComponent implements OnDestroy {
         if (this.stopCarousel)
             return;
 
-        for (var i = 0; i < this.games.length; i++) {
+        for (let i = 0; i < this.games.length; i++) {
             this.games[i].style.transform = `translateX(-${(this.currentIndex) * 100}%)`;
         }
     }

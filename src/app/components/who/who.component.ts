@@ -27,7 +27,6 @@ export class WhoComponent implements OnInit {
     this.ELEMENT = document.querySelector("#text");
     this.CURSOR = document.querySelector("#cursor");
 
-
     if (this.INTERVAL_VAL) {
       this.INTERVAL_VAL.unsubscribe();
     }
@@ -39,13 +38,15 @@ export class WhoComponent implements OnInit {
 
   private EffectType(): void {
     const text = this.translateService.instant(this.SENTENCES[this.PART]).substring(0, this.PART_INDEX + 1);
-    this.ELEMENT!.innerHTML = text;
+    if (this.ELEMENT)
+      this.ELEMENT.innerHTML = text;
     this.PART_INDEX++;
 
-    if (text === this.translateService.instant(this.SENTENCES[this.PART])) {
-      this.CURSOR!.style.display = 'none';
+    if (this.CURSOR && this.INTERVAL_VAL &&
+      text === this.translateService.instant(this.SENTENCES[this.PART])) {
+      this.CURSOR.style.display = 'none';
 
-      this.INTERVAL_VAL!.unsubscribe();
+      this.INTERVAL_VAL.unsubscribe();
 
       setTimeout(() => {
         this.INTERVAL_VAL = interval(50).pipe(take(Infinity)).subscribe(() => this.EffectDelete());
@@ -55,11 +56,13 @@ export class WhoComponent implements OnInit {
 
   private EffectDelete(): void {
     const text = this.translateService.instant(this.SENTENCES[this.PART]).substring(0, this.PART_INDEX - 1);
-    this.ELEMENT!.innerHTML = text;
+    if (this.ELEMENT)
+      this.ELEMENT.innerHTML = text;
     this.PART_INDEX--;
 
     if (text === '') {
-      this.INTERVAL_VAL!.unsubscribe();
+      if (this.INTERVAL_VAL)
+        this.INTERVAL_VAL.unsubscribe();
 
       if (this.PART == (this.SENTENCES.length - 1))
         this.PART = 0;
@@ -69,7 +72,8 @@ export class WhoComponent implements OnInit {
       this.PART_INDEX = 0;
 
       setTimeout(() => {
-        this.CURSOR!.style.display = 'inline-block';
+        if (this.CURSOR)
+          this.CURSOR.style.display = 'inline-block';
         this.INTERVAL_VAL = interval(100).pipe(take(Infinity)).subscribe(() => this.EffectType());
       }, 200);
     }

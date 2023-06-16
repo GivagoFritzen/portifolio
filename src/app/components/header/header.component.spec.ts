@@ -8,6 +8,9 @@ import { NavigationEnd, Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
 import { of } from 'rxjs';
 
+import ptBR from '../../../assets/i18n/pt-BR.json';
+import enUS from '../../../assets/i18n/en-US.json';
+
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
@@ -20,8 +23,8 @@ describe('HeaderComponent', () => {
       imports: [
         BrowserAnimationsModule,
         TranslateTestingModule
-          .withTranslations('pt-BR', require('../../../assets/i18n/pt-BR.json'))
-          .withTranslations('en-US', require('../../../assets/i18n/en-US.json')),
+          .withTranslations('pt-BR', ptBR)
+          .withTranslations('en-US', enUS),
       ]
     }).compileComponents();
 
@@ -132,8 +135,8 @@ describe('HeaderComponent ngOnInit router NavigationEnd', () => {
       imports: [
         BrowserAnimationsModule,
         TranslateTestingModule
-          .withTranslations('pt-BR', require('../../../assets/i18n/pt-BR.json'))
-          .withTranslations('en-US', require('../../../assets/i18n/en-US.json')),
+          .withTranslations('pt-BR', ptBR)
+          .withTranslations('en-US', enUS),
       ],
       providers: [{ provide: Router, useClass: MockRouter }]
     }).compileComponents();

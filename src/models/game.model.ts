@@ -1,7 +1,7 @@
 export class GameModel {
-    imageSrc: string = '';
-    showTitleInTheSlideSelection: boolean = true;
-    src: string = '';
-    title: string = '';
-    text: string = '';
+    imageSrc = '';
+    showTitleInTheSlideSelection = true;
+    src = '';
+    title = '';
+    text = '';
 }

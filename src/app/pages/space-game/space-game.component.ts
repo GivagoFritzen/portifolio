@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, HostListener, OnDestroy, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnDestroy, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { map, player } from './configs';
 import { ObstacleModel } from './model/obstacle.model';
@@ -9,27 +9,29 @@ import { ObstacleModel } from './model/obstacle.model';
   styleUrls: ['./space-game.component.scss']
 })
 export class SpaceGameComponent implements AfterViewInit, OnDestroy {
-  @ViewChild('canvas', { static: true })
-  canvas!: ElementRef<HTMLCanvasElement>;
   private ctx!: CanvasRenderingContext2D;
 
-  private headerSize: number = 65;
-  private frameNumber: number = 0;
+  private headerSize = 65;
+  private frameNumber = 0;
 
-  showGameOver: boolean = false;
+  showGameOver = false;
   private gameLoop?: NodeJS.Timer;
-  private playerImg: any = new Image();
+  private playerImg = new Image();
 
-  private obstacleImg: any = new Image();
+  private obstacleImg = new Image();
   private obstacles: Array<ObstacleModel> = [];
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private renderer: Renderer2) {
     if (localStorage.getItem("Secret") == null)
       this.goHome();
   }
 
   ngAfterViewInit(): void {
-    this.ctx = this.canvas.nativeElement.getContext('2d')!;
+    const canvas = this.renderer.createElement('canvas');
+    canvas.setAttribute('id', 'canvas');
+    document.body.appendChild(canvas);
+
+    this.ctx = canvas.getContext('2d');
     this.ctx.canvas.width = window.innerWidth;
     this.ctx.canvas.height = window.innerHeight;
 

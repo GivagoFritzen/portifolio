@@ -15,7 +15,7 @@ export class PageNotFoundComponent implements OnInit {
   THIRDNUMBER?: HTMLElement | null;
   SPACETEXT?: HTMLElement | null;
 
-  DURATION: number = 250;
+  DURATION = 250;
 
   SENTENCES: string[] = [
     "not-found.here",
@@ -41,16 +41,19 @@ export class PageNotFoundComponent implements OnInit {
     this.THIRDNUMBER = document.querySelector("#third-number");
     this.SPACETEXT = document.querySelector("#space-text");
 
-    this.randomAnimate(this.FIRSTNUMBER!);
-    this.randomAnimate(this.SECONDNUMBER!);
-    this.randomAnimate(this.THIRDNUMBER!);
+    this.randomAnimate(this.FIRSTNUMBER);
+    this.randomAnimate(this.SECONDNUMBER);
+    this.randomAnimate(this.THIRDNUMBER);
 
-    this.randomAnimateSpaceText(this.SPACETEXT!, this.DURATION);
+    this.randomAnimateSpaceText(this.SPACETEXT, this.DURATION);
 
     this.setSpaceTextByLanguage();
   }
 
-  private randomAnimate(element: HTMLElement): void {
+  private randomAnimate(element: HTMLElement | null): void {
+    if (element === null)
+      return;
+
     this.randomRotation(element);
 
     gsap.to(element, {
@@ -69,7 +72,10 @@ export class PageNotFoundComponent implements OnInit {
     }).progress(0.25);
   }
 
-  private randomAnimateSpaceText(element: HTMLElement, duration: number = this.DURATION): void {
+  private randomAnimateSpaceText(element: HTMLElement | null, duration: number = this.DURATION): void {
+    if (element === null)
+      return;
+
     this.randomRotation(element);
 
     gsap.to(element, {
@@ -89,7 +95,12 @@ export class PageNotFoundComponent implements OnInit {
   }
 
   private setSpaceTextByLanguage() {
-    this.SPACETEXT!.firstChild!.textContent = this.translateService.instant(this.SENTENCES[this.randomIntFromInterval(0, this.SENTENCES.length - 1)]);
+    if (!this.SPACETEXT || !this.SPACETEXT.firstChild)
+      return;
+
+    this.SPACETEXT.firstChild.textContent = this.translateService.instant(
+      this.SENTENCES[this.randomIntFromInterval(0, this.SENTENCES.length - 1)]
+    );
   }
 
   private randomRotation(element: HTMLElement): void {
@@ -110,12 +121,12 @@ export class PageNotFoundComponent implements OnInit {
   }
 
   private randomPoints(): Position[] {
-    let points: Position[] = [];
+    const points: Position[] = [];
 
     const margin = 15;
     const halfScreenWidth = window.innerWidth / 2 - margin;
     const halfScreenHeight = window.innerHeight / 2 - margin;
-    for (var i = 0; i < this.randomIntFromInterval(5, 13); i++) {
+    for (let i = 0; i < this.randomIntFromInterval(5, 13); i++) {
       points.push({
         x: this.randomIntFromInterval(-halfScreenWidth, halfScreenWidth),
         y: this.randomIntFromInterval(-halfScreenHeight, halfScreenHeight)

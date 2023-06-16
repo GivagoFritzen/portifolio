@@ -54,6 +54,6 @@ describe('ModalGameComponent', () => {
 
         component.closeModal();
         expect(document.body.classList.contains('no-scroll')).toBeFalse();
-
+        expect(count).toBe(1);
     });
 });

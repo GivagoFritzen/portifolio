@@ -71,7 +71,7 @@
     scroll-behavior: smooth;
     scrollbar-width: none;
 
-    @media screen and (max-width: 1500px) {
+    @media screen and (max-width: 1650px) {
         grid-auto-columns: calc(100% / 3);
     }
 

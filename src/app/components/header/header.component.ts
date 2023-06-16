@@ -11,10 +11,10 @@ import { HeaderAnimation } from '../../../utils/animations/header-animation';
   animations: [HeaderAnimation],
 })
 export class HeaderComponent implements OnInit {
-  show: boolean = true;
-  isHome: boolean = false;
+  show = true;
+  isHome = false;
 
-  private currentPosition: number = 0;
+  private currentPosition = 0;
   private CHECKBOX?: HTMLInputElement | null;
 
   constructor(private scroller: ViewportScroller, private translateService: TranslateService, private router: Router) {
@@ -35,34 +35,37 @@ export class HeaderComponent implements OnInit {
 
   @HostListener('window:scroll')
   onWindowScroll(): void {
-    let scroll = window.pageYOffset;
+    const scroll = window.scrollY;
     if (scroll > this.currentPosition || this.currentPosition == 0) {
       this.show = false;
     } else {
       this.show = true;
     }
 
-    this.CHECKBOX!.checked = false;
     this.currentPosition = scroll;
+    if (this.CHECKBOX)
+      this.CHECKBOX.checked = false;
   }
 
   @HostListener('window:resize', ['$event'])
   onResize(): void {
-    if (this.CHECKBOX!.checked && window.innerWidth >= 700) {
-      this.CHECKBOX!.checked = false;
+    if (this.CHECKBOX && this.CHECKBOX.checked && window.innerWidth >= 700) {
+      this.CHECKBOX.checked = false;
     }
   }
 
   goToId(id: string): void {
     this.scroller.scrollToAnchor(id);
-    this.CHECKBOX!.checked = false;
+    if (this.CHECKBOX)
+      this.CHECKBOX.checked = false;
   }
 
   goHome(): void {
     this.router.navigateByUrl('');
   }
 
-  switchLanguage(lang: any): void {
-    this.translateService.use(lang.target.value);
+  switchLanguage($event: Event): void {
+    const lang = $event.target as HTMLInputElement;
+    this.translateService.use(lang.value);
   }
 }
