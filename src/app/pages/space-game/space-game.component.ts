@@ -43,7 +43,7 @@ export class SpaceGameComponent implements AfterViewInit, OnDestroy {
   ngOnDestroy() {
     clearInterval(this.gameLoop);
 
-    var canvas = document.getElementById(this.canvasName);
+    const canvas = document.getElementById(this.canvasName);
     if (canvas)
       canvas.remove();
   }

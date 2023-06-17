@@ -28,7 +28,8 @@
             "type": "element",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@typescript-eslint/ban-types": "off"
       }
     },
     {
