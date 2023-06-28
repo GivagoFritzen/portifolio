@@ -45,28 +45,28 @@ describe('HeaderComponent', () => {
     window.dispatchEvent(scrollEvent);
 
     expect(component.show).toBeFalse();
-    expect(component['currentPosition']).toBe(window.pageYOffset);
+    expect(component['currentPosition']).toBe(window.scrollY);
     expect(component['CHECKBOX']!.checked).toBeFalse();
   });
 
   it('should scroll with scroll > this.currentPosition', () => {
-    window.pageYOffset = 10;
+    window.scrollY = 10;
     const scrollEvent = new Event('scroll');
     window.dispatchEvent(scrollEvent);
 
     expect(component.show).toBeFalse();
-    expect(component['currentPosition']).toBe(window.pageYOffset);
+    expect(component['currentPosition']).toBe(window.scrollY);
     expect(component['CHECKBOX']!.checked).toBeFalse();
   });
 
   it('should scroll and show be equal true', () => {
-    window.pageYOffset = 10;
+    window.scrollY = 10;
     const scrollEvent = new Event('scroll');
     window.dispatchEvent(scrollEvent);
     window.dispatchEvent(scrollEvent);
 
     expect(component.show).toBeTrue();
-    expect(component['currentPosition']).toBe(window.pageYOffset);
+    expect(component['currentPosition']).toBe(window.scrollY);
     expect(component['CHECKBOX']!.checked).toBeFalse();
   });
 
@@ -110,12 +110,11 @@ describe('HeaderComponent', () => {
 
   it('should change language', () => {
     const otherLanguage = 'en-US';
-
     component.switchLanguage({
       target: {
         value: otherLanguage
       }
-    });
+    } as unknown as Event);
 
     expect(translateServiceMock.currentLang).toBe(otherLanguage);
   });
