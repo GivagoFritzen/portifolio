@@ -8,8 +8,10 @@
     },
     "who": {
         "is": "Quem é Givago?",
-        "fraseA": "Piadas Ruins",
-        "fraseB": "Piadas Boas"
+        "info-one": "Desenvolvedor que ama codar",
+        "info-two": "Formado em Jogos Digitais pelo Unisinos",
+        "info-three": "Sempre em busca de aprendizado",
+        "info-four": "Comprometido em ajudar"
     },
     "skills": {
         "title": "Habilidades",

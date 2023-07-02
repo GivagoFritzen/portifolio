@@ -8,8 +8,10 @@
     },
     "who": {
         "is": "Who is Givago?",
-        "fraseA": "Bad Jokes",
-        "fraseB": "Good Jokes"
+        "info-one": "Developer who loves coding",
+        "info-two": "Graduated in Games at Unisinos",
+        "info-three": "Always looking for learning",
+        "info-four": "Commited to helping"
     },
     "skills": {
         "title": "Skills",

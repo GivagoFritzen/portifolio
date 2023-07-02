@@ -9,8 +9,10 @@ import { Subscription, interval, take } from 'rxjs';
 })
 export class WhoComponent implements OnInit {
   private SENTENCES: string[] = [
-    "who.fraseA",
-    "who.fraseB"
+    "who.info-one",
+    "who.info-two",
+    "who.info-three",
+    "who.info-four"
   ];
 
   private PART = 0;

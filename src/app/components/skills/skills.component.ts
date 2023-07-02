@@ -12,16 +12,16 @@ import ScrollReveal from 'scrollreveal';
 export class SkillsComponent implements OnInit, AfterViewInit {
   hidden = 'out';
   skills: SkillModel[] = [
-    { title: 'CSS', percentage: '20%' },
-    { title: 'React', percentage: '90%' },
-    { title: 'Angular', percentage: '90%' },
-    { title: 'CSharp', percentage: '90%' },
-    { title: 'SQL', percentage: '90%' },
-    { title: 'Mongo', percentage: '90%' }
+    { title: 'CSS', percentage: '80%' },
+    { title: 'React', percentage: '60%' },
+    { title: 'Angular', percentage: '65%' },
+    { title: 'CSharp', percentage: '75%' },
+    { title: 'SQL', percentage: '70%' },
+    { title: 'Mongo', percentage: '70%' }
   ];
 
   othersSkills: SkillModel[] = [
-    { title: 'skills.bad-jokes', percentage: '11%' }
+    { title: 'skills.bad-jokes', percentage: '100%' }
   ];
 
   ngOnInit(): void {
