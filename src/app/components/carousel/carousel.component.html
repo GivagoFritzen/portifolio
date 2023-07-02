@@ -9,7 +9,8 @@
             <div class="game" [ngClass]="'game-' + i">
                 <button (click)="seeMore(slides[i])">
                     <h2 *ngIf="slides[i].showTitleInTheSlideSelection">{{ slides[i].title }}</h2>
-                    <img src='{{ "../../../assets/games/" + slides[i].imageSrc + ".jpg" }}' />
+                    <img src='{{ "../../../assets/games/" + slides[i].imageSrc + ".jpg" }}'
+                        alt='Img {{slides[i].title}}' />
                     <button class="see-more">
                         <span>{{ 'carousel.see-more' | translate }}</span>
                     </button>
