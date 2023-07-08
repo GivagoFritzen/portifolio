@@ -26,7 +26,7 @@ export const slides: GameModel[] = [
         imageSrc: 'war',
         src: 'https://givagofritzen.itch.io/war',
         title: 'War',
-        text: 'war',
+        text: 'wars',
         showTitleInTheSlideSelection: true
     },
     {
@@ -47,14 +47,14 @@ export const slides: GameModel[] = [
         imageSrc: 'avoid-the-void',
         src: 'https://play.google.com/store/apps/details?id=com.ReversalMirror.AvoidTheVoid',
         title: 'Avoid The Void',
-        text: 'null',
+        text: 'avoid',
         showTitleInTheSlideSelection: false
     },
     {
         imageSrc: 'my-hot-dog',
         src: 'https://www.gamertrials.com/11257/hub',
         title: 'My Hot Dog',
-        text: 'null',
+        text: '',
         showTitleInTheSlideSelection: false
     },
     {
@@ -102,7 +102,7 @@ export const slides: GameModel[] = [
     {
         imageSrc: 'random-keys',
         src: 'https://givagofritzen.itch.io/random-keys',
-        title: 'Random Keys',
+        title: 'RandomKeys',
         text: 'random-keys',
         showTitleInTheSlideSelection: true
     }
