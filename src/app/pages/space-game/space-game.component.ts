@@ -115,7 +115,7 @@ export class SpaceGameComponent implements AfterViewInit, OnDestroy {
 
   private loadAssets(): void {
     this.playerImg.src = player.imgSrc;
-    this.obstacleImg.src = '../../../../assets/game/star.svg';
+    this.obstacleImg.src = 'assets/game/star.svg';
   }
 
   private drawPlayer(): void {

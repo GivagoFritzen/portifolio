@@ -6,5 +6,5 @@ export const player: PlayerModel = {
     speed: 18,
     height: 73,
     width: 43,
-    imgSrc: '../../../../assets/game/spaceship.svg'
+    imgSrc: 'assets/game/spaceship.svg'
 };
